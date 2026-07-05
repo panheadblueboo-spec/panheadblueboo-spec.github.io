@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
   <meta name="theme-color" content="#111827" />
-  <title>まにまにクエスト - BGM統合版</title>
+  <title>まにまにクエスト - フィールド探索版</title>
   <style>
     :root{--bg1:#0f172a;--bg2:#1e293b;--panel:rgba(15,23,42,.86);--line:rgba(255,255,255,.12);--text:#f8fafc;--muted:#cbd5e1}
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -42,7 +42,7 @@
     .cmd{min-height:58px;border:1px solid rgba(255,255,255,.14);border-radius:16px;color:white;background:rgba(255,255,255,.08);font-size:16px;font-weight:900;cursor:pointer;touch-action:manipulation;transition:transform .08s ease,filter .15s ease,opacity .2s ease}
     .cmd small{display:block;font-size:11px;font-weight:600;margin-top:3px;color:rgba(255,255,255,.75)}.cmd:active{transform:scale(.97)}.cmd:disabled{opacity:.38;cursor:default}
     .attack{background:linear-gradient(135deg,#b45309,#f59e0b)}.skill{background:linear-gradient(135deg,#6d28d9,#a78bfa)}.heal{background:linear-gradient(135deg,#047857,#10b981)}.guard{background:linear-gradient(135deg,#334155,#64748b)}.map,.magic,.job,.shop,.audio{grid-column:1/-1}.audio{background:linear-gradient(135deg,#be185d,#f59e0b)}.audio.audio-on{box-shadow:0 0 0 2px rgba(250,204,21,.28),0 0 18px rgba(245,158,11,.24)}.magic{background:linear-gradient(135deg,#7c3aed,#06b6d4)}.job{background:linear-gradient(135deg,#92400e,#ef4444)}.shop{background:linear-gradient(135deg,#0f766e,#ca8a04)}.spell{background:linear-gradient(135deg,#312e81,#0f766e)}.job-choice{background:linear-gradient(135deg,#422006,#7f1d1d)}.shop-choice{background:linear-gradient(135deg,#164e63,#854d0e)}.magic-panel,.job-panel,.shop-panel{grid-column:1/-1;display:none;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.magic-panel.open,.job-panel.open,.shop-panel.open{display:grid}.magic-panel .cmd,.job-panel .cmd,.shop-panel .cmd{min-height:50px;font-size:14px}.spell-locked,.job-locked,.shop-locked{opacity:.34}.spell-ready,.job-current,.equip-current{box-shadow:0 0 0 2px rgba(250,204,21,.24)}.shop-buyable{box-shadow:0 0 0 2px rgba(52,211,153,.22)}
-    .map{background:linear-gradient(135deg,#1d4ed8,#16a34a)}.map-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.map-panel.open{display:block}.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:#e2e8f0;font-weight:900}.map-help{color:var(--muted);font-size:11px;line-height:1.35}.map-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:8px 0}.map-tile{aspect-ratio:1/1;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(15,23,42,.7);display:grid;place-items:center;font-size:clamp(18px,6vw,30px);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.map-tile.forest{background:rgba(22,101,52,.55)}.map-tile.water{background:rgba(14,116,144,.5)}.map-tile.treasure{background:rgba(146,64,14,.58)}.map-tile.camp{background:rgba(6,95,70,.58)}.map-tile.boss{background:rgba(127,29,29,.66)}.map-tile.start{background:rgba(59,130,246,.38)}.map-player{position:absolute;inset:6%;display:grid;place-items:center;border-radius:50%;background:rgba(250,204,21,.92);box-shadow:0 0 18px rgba(250,204,21,.55);font-size:clamp(17px,5.4vw,28px);animation:playerPulse 1.2s ease-in-out infinite}@keyframes playerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.map-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:280px;margin:10px auto 0}.move-btn{min-height:44px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:linear-gradient(135deg,#334155,#0f766e);color:#fff;font-size:20px;font-weight:900}.move-btn:active{transform:scale(.97)}.move-spacer{min-height:44px}.map-idle{opacity:.32;filter:grayscale(.4)}
+    .map{background:linear-gradient(135deg,#1d4ed8,#16a34a)}.map-panel{display:none;margin-top:12px;padding:12px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.map-panel.open{display:block}.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:#e2e8f0;font-weight:900}.map-help{color:var(--muted);font-size:11px;line-height:1.45}.field-screen{position:relative;height:min(58vw,300px);min-height:230px;overflow:hidden;margin:10px 0;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:linear-gradient(to bottom,#60a5fa 0 38%,#22c55e 39% 100%);box-shadow:inset 0 0 42px rgba(0,0,0,.25)}.field-screen:before{content:"";position:absolute;left:-10%;right:-10%;bottom:-20%;height:46%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(21,128,61,.9),rgba(20,83,45,.95));box-shadow:inset 0 18px 35px rgba(255,255,255,.06)}.field-screen:after{content:"";position:absolute;left:43%;bottom:-7%;width:16%;height:66%;background:linear-gradient(to bottom,rgba(180,83,9,.55),rgba(120,53,15,.76));clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);opacity:.7}.field-forest{background:linear-gradient(to bottom,#0f766e 0 36%,#14532d 37% 100%)}.field-water{background:linear-gradient(to bottom,#38bdf8 0 44%,#0369a1 45% 100%)}.field-treasure{background:linear-gradient(to bottom,#f59e0b 0 35%,#166534 36% 100%)}.field-camp{background:linear-gradient(to bottom,#475569 0 34%,#15803d 35% 100%)}.field-boss{background:linear-gradient(to bottom,#111827 0 45%,#7f1d1d 46% 100%)}.field-start{background:linear-gradient(to bottom,#60a5fa 0 38%,#16a34a 39% 100%)}.field-hero{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:58px;height:58px;display:grid;place-items:center;border-radius:50%;background:rgba(250,204,21,.92);box-shadow:0 0 20px rgba(250,204,21,.55),0 14px 20px rgba(0,0,0,.3);font-size:32px;z-index:4;transition:left .22s ease,top .22s ease}.field-current{position:absolute;right:12px;top:12px;z-index:3;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(15,23,42,.58);padding:6px 10px;font-size:12px;font-weight:900}.field-marker{position:absolute;z-index:2;font-size:28px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}.field-marker.village{left:12%;top:43%}.field-marker.ruin{left:72%;top:36%}.field-marker.castle{right:10%;top:18%;font-size:36px}.field-marker.camp{left:18%;bottom:15%}.field-marker.treasure{right:20%;bottom:18%}.encounter-gauge{position:absolute;left:12px;right:12px;bottom:10px;z-index:5;display:grid;grid-template-columns:72px 1fr;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(15,23,42,.68);border:1px solid rgba(255,255,255,.12);font-size:10px;font-weight:900;color:#cbd5e1}.encounter-gauge i{height:8px;border-radius:999px;background:linear-gradient(90deg,#22c55e,#f59e0b,#ef4444);transform-origin:left center;transform:scaleX(.2);transition:transform .25s ease}.joystick-wrap{display:grid;gap:10px;justify-items:center}.joy-pad{display:grid;grid-template-columns:64px 64px 64px;grid-template-rows:54px 54px 54px;gap:7px;justify-content:center;align-items:center;padding:10px;border-radius:24px;background:rgba(15,23,42,.45);border:1px solid rgba(255,255,255,.1);touch-action:manipulation}.joy-btn{width:64px;height:54px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:linear-gradient(135deg,#334155,#0f766e);color:#fff;font-size:24px;font-weight:900;box-shadow:0 8px 16px rgba(0,0,0,.18);cursor:pointer}.joy-btn:active{transform:scale(.95);filter:brightness(1.15)}.joy-center{display:grid;place-items:center;width:64px;height:54px;border-radius:18px;background:rgba(255,255,255,.08);font-size:24px}.auto-map-btn{width:100%;min-height:54px;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:linear-gradient(135deg,#15803d,#2563eb);color:#fff;font-size:16px;font-weight:900;cursor:pointer;touch-action:manipulation}.auto-map-btn.objective{background:linear-gradient(135deg,#7c2d12,#be123c)}.auto-map-btn small{display:block;font-size:11px;font-weight:700;margin-top:3px;color:rgba(255,255,255,.78)}.auto-map-btn:active{transform:scale(.98)}.auto-map-btn:disabled{opacity:.42}.map-idle{opacity:.32;filter:grayscale(.4)}
         .story{grid-column:1/-1;background:linear-gradient(135deg,#4338ca,#be123c)}.story-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:linear-gradient(160deg,rgba(49,46,129,.28),rgba(88,28,135,.18));border:1px solid rgba(216,180,254,.28)}.story-panel.open{display:block}.story-head,.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:900;color:#fde68a;margin-bottom:8px}.story-box,.quest-box{border:1px solid rgba(255,255,255,.12);background:rgba(15,23,42,.55);border-radius:14px;padding:10px;margin-top:8px;line-height:1.55;font-size:13px}.chapter-title{font-size:15px;font-weight:900;color:#fff;margin-bottom:4px}.quest-line{color:#bfdbfe;font-weight:800}.story-note{color:#d8b4fe}.system-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.system-tags span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 8px;background:rgba(255,255,255,.08);font-size:11px;font-weight:800}.ending-glow{animation:endingGlow 1.2s ease infinite alternate}@keyframes endingGlow{from{filter:drop-shadow(0 0 6px rgba(250,204,21,.35))}to{filter:drop-shadow(0 0 20px rgba(250,204,21,.95))}}
 .footer-row{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:12px}.restart{border:1px solid var(--line);border-radius:12px;padding:9px 12px;color:white;background:rgba(255,255,255,.08);font-weight:800}
     @media(max-width:430px){.header{padding:13px 14px 8px}.battlefield{min-height:335px}.status-grid{top:10px;left:10px;right:10px;gap:7px}.card{padding:8px}.bar-row{grid-template-columns:28px 1fr 46px;gap:4px}.hero{left:5%}.enemy{right:5%}.sprite{font-size:76px}.portrait-sprite{width:92px;height:92px}.lower{padding:11px}.message{min-height:62px;font-size:14px}.commands{gap:8px}.cmd{min-height:54px;font-size:15px}}
@@ -77,12 +77,16 @@
         <div class="quest-box" id="questText">現在の目的を確認できます。</div>
       </div>
       <div class="map-panel" id="mapPanel">
-        <div class="map-head"><span>🗺️ 冒険MAP</span><span id="mapPosText">X1 Y7</span></div>
-        <div class="map-help" id="mapInfoText">十字キーで主人公を操作。町・祠・宝箱・魔王城で物語が進みます。</div>
-        <div class="map-grid" id="mapGrid" aria-label="冒険マップ"></div>
-        <div class="map-controls">
-          <div class="move-spacer"></div><button class="move-btn" data-move="0,-1" aria-label="上へ移動">▲</button><div class="move-spacer"></div>
-          <button class="move-btn" data-move="-1,0" aria-label="左へ移動">◀</button><button class="move-btn" data-move="0,1" aria-label="下へ移動">▼</button><button class="move-btn" data-move="1,0" aria-label="右へ移動">▶</button>
+        <div class="map-head"><span>🗺️ フィールド探索</span><span id="mapPosText">草原</span></div>
+        <div class="map-help" id="mapInfoText">別画面フィールドをジョイスティックで移動します。歩いているとランダムエンカウントで戦闘に入ります。</div>
+        <div class="field-screen field-start" id="mapGrid" aria-label="冒険フィールド"></div>
+        <div class="joystick-wrap" aria-label="フィールド操作ジョイスティック">
+          <div class="joy-pad">
+            <span></span><button class="joy-btn" data-move="0,-1">▲</button><span></span>
+            <button class="joy-btn" data-move="-1,0">◀</button><div class="joy-center">🧭</div><button class="joy-btn" data-move="1,0">▶</button>
+            <span></span><button class="joy-btn" data-move="0,1">▼</button><span></span>
+          </div>
+          <button class="auto-map-btn objective" id="objectiveBtn">🎯 目的地へ進む<small>迷った時だけ使用</small></button>
         </div>
       </div>
       <div class="commands">
@@ -90,7 +94,7 @@
         <button class="cmd skill" id="skillBtn">🔥 火炎斬り<small>MP 8／大ダメージ</small></button>
         <button class="cmd heal" id="healBtn">🧪 回復薬<small id="potionText">残り3個</small></button>
         <button class="cmd guard" id="guardBtn">🛡️ 防御<small>次の被ダメージ半減</small></button>
-        <button class="cmd map" id="mapBtn">🗺️ MAP<small id="mapText">冒険に出る</small></button>
+        <button class="cmd map" id="mapBtn">🗺️ フィールド<small id="mapText">ジョイスティック探索</small></button>
         <button class="cmd story" id="storyBtn">📜 物語<small id="storyBtnText">現在の目的</small></button>
         <button class="cmd audio" id="bgmBtn">🎵 BGM<small id="bgmText">OFF / タップで再生</small></button>
         <button class="cmd magic" id="magicBtn">✨ 魔法<small id="magicText">ファイア MP 6</small></button>
@@ -141,7 +145,7 @@
   const enemyFaces=[...document.querySelectorAll('.enemy-face')];
   function showEnemyPortrait(index){const shown=Math.min(index,enemyFaces.length-1);enemyFaces.forEach((img,i)=>img.classList.toggle('active',i===shown));}
   const stageLabel=$('stageLabel'),potionText=$('potionText'),goldText=$('goldText');
-  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),storyBtn=$('storyBtn'),storyBtnText=$('storyBtnText'),storyPanel=$('storyPanel'),storyText=$('storyText'),questText=$('questText'),chapterText=$('chapterText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),bgmBtn=$('bgmBtn'),bgmText=$('bgmText'),restartBtn=$('restartBtn');
+  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),storyBtn=$('storyBtn'),storyBtnText=$('storyBtnText'),storyPanel=$('storyPanel'),storyText=$('storyText'),questText=$('questText'),chapterText=$('chapterText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),bgmBtn=$('bgmBtn'),bgmText=$('bgmText'),autoExploreBtn=$('autoExploreBtn'),objectiveBtn=$('objectiveBtn'),restartBtn=$('restartBtn');
   const spellBtns=[...document.querySelectorAll('[data-spell]')];
   const jobBtns=[...document.querySelectorAll('[data-job]')];
   const shopBtns=[...document.querySelectorAll('[data-shop]')];
@@ -392,20 +396,24 @@
   function setTile(x,y,v){if(mapState.tiles[y])mapState.tiles[y][x]=v}
   function renderMap(){
     if(!mapGrid||!mapState)return;
-    mapGrid.innerHTML='';
-    for(let y=0;y<mapState.tiles.length;y++){
-      for(let x=0;x<mapState.tiles[y].length;x++){
-        const ch=mapState.tiles[y][x],def=mapTileDefs[ch]||mapTileDefs['.'];
-        const cell=document.createElement('div');cell.className=`map-tile ${def.cls}`;cell.title=def.name;cell.textContent=def.icon;
-        if(x===mapState.x&&y===mapState.y){const pl=document.createElement('div');pl.className='map-player';pl.textContent=currentJob().icon||'🧍';cell.appendChild(pl)}
-        mapGrid.appendChild(cell);
-      }
-    }
-    mapPosText.textContent=`X${mapState.x+1} Y${mapState.y+1}`;
-    mapText.textContent=mapMode?'移動中':'冒険MAPを開く';
+    const ch=tileAt(),def=mapTileDefs[ch]||mapTileDefs['.'];
+    const maxSteps=Math.max(1,mapState.encounterAfter||6);
+    const gauge=Math.min(.98,(mapState.steps||0)/maxSteps);
+    mapGrid.className=`field-screen field-${def.cls||'plain'}`;
+    mapGrid.innerHTML=`
+      <div class="field-current">${def.icon} ${def.name}</div>
+      <div class="field-marker village" title="港町ミナト">🏘️</div>
+      <div class="field-marker ruin" title="古代祠">🗿</div>
+      <div class="field-marker castle" title="魔王城">🏰</div>
+      <div class="field-marker camp" title="キャンプ">⛺</div>
+      ${ch==='T'?'<div class="field-marker treasure" title="宝箱">💰</div>':''}
+      <div class="field-hero" style="left:${16+mapState.x*11.4}%;top:${24+mapState.y*8.8}%">${currentJob().icon||'🧍'}</div>
+      <div class="encounter-gauge"><span>ENCOUNT</span><i style="transform:scaleX(${gauge})"></i></div>`;
+    mapPosText.textContent=`${def.name} X${mapState.x+1} Y${mapState.y+1}`;
+    mapText.textContent=mapMode?'フィールド移動中':'フィールドへ出る';
   }
   function mapMessage(text){if(mapInfoText)mapInfoText.innerHTML=text;setMessage(text)}
-  function enterMapMode(text='冒険MAPで主人公を操作してください。森や草原を歩くと敵と遭遇します。'){
+  function enterMapMode(text='フィールドへ出ました。ジョイスティックで歩くとランダムエンカウントが発生します。'){
     if(!mapState)initMap();
     mapMode=true;locked=false;closePanels();mapPanel.classList.add('open');enemyEl.classList.add('map-idle');
     updateBgmMode();mapMessage(text);render();renderMap();
@@ -417,7 +425,63 @@
   function toggleMapPanel(){
     if(gameOver)return;
     mapPanel.classList.toggle('open');renderMap();
-    setMessage(mapPanel.classList.contains('open')?'MAPを表示しました。矢印ボタンかキーボードで移動できます。':'MAPを閉じました。');
+    setMessage(mapPanel.classList.contains('open')?'フィールド画面を表示しました。ジョイスティックで移動できます。':'フィールド画面を閉じました。');
+  }
+  function findMapTile(ch){
+    if(!mapState)return null;
+    for(let y=0;y<mapState.tiles.length;y++)for(let x=0;x<mapState.tiles[y].length;x++)if(mapState.tiles[y][x]===ch)return {x,y};
+    return null;
+  }
+  function jumpToTile(ch){
+    const p=findMapTile(ch);if(!p)return false;
+    mapState.x=p.x;mapState.y=p.y;renderMap();return true;
+  }
+  function autoVisitVillage(){
+    jumpToTile('V');
+    if(!hero.story.visitedVillage){
+      hero.story.visitedVillage=true;const logs=advanceStory();floatEffect(heroEl,'町の噂','#bfdbfe');
+      mapMessage(`🏘️ 港町ミナトへ自動移動。語り部「鐘が鳴ったなら、まずは歌声の森へ向かいなさい。」${logs.length?'<br>'+logs.join('<br>'):''}`);
+    }else mapMessage('🏘️ 港町ミナトへ自動移動。装備と転職を整えて、次の目的地へ進もう。');
+    render();renderMap();
+  }
+  function autoVisitRuin(){
+    jumpToTile('R');
+    if(!hero.story.ruin){
+      hero.story.ruin=true;hero.story.seals=Math.max(hero.story.seals,1);hero.magic+=2;const logs=advanceStory();floatEffect(heroEl,'紋章入手','#facc15');
+      mapMessage(`🗿 古代祠へ自動移動。「まにまに紋章」を手に入れた！ MAG+2。${logs.length?'<br>'+logs.join('<br>'):''}`);
+    }else mapMessage('🗿 古代祠へ自動移動。紋章の光が魔王城の方角を示している。');
+    render();renderMap();
+  }
+  function autoCamp(){
+    jumpToTile('C');hero.hp=hero.maxHp;hero.mp=hero.maxMp;hero.potions=Math.min(9,hero.potions+1);
+    floatEffect(heroEl,'全回復','#86efac');mapMessage('⛺ キャンプへ自動移動。HPとMPが全回復し、回復薬が1個増えた。');render();renderMap();
+  }
+  function autoTreasure(){
+    if(!jumpToTile('T'))return false;
+    const gold=rand(35,95)+hero.level*8;hero.gold+=gold;setTile(mapState.x,mapState.y,'.');
+    floatEffect(heroEl,`+${gold}G`,'#fde68a');mapMessage(`💰 宝箱を自動回収！ <strong>${gold}G</strong> を獲得。`);render();renderMap();return true;
+  }
+  function autoMapAction(mode='auto'){
+    if(gameOver||locked)return;
+    if(!mapState)initMap();
+    if(!mapMode){enterMapMode('フィールドへ出ました。ジョイスティックで移動するか、迷った時は目的地へ進んでください。');return}
+    closePanels();mapPanel.classList.add('open');
+    const logs=advanceStory();
+    if(logs.length){storyPanel.classList.add('open');setMessage(`<strong>物語が進行しました！</strong><br>${logs.join('<br>')}<br>次は「目的地へ進む」を押してください。`);render();return}
+    if(!hero.story.visitedVillage){autoVisitVillage();return}
+    if(mode==='objective'){
+      if((hero.story.chapter>=3||stage>=3)&&!hero.story.ruin){autoVisitRuin();return}
+      if(stage>=enemies.length-1){jumpToTile('B');
+        if(!hero.story.key&&stage<enemies.length-1){mapMessage('🏰 魔王城の門は閉ざされている。先に守護者を倒そう。');return}
+        startMapBattle('🏰 魔王城へ自動移動した！');return;
+      }
+      startMapBattle('🎯 目的地へ向かう途中で敵と遭遇した！');return;
+    }
+    if(hero.hp<=Math.round(hero.maxHp*.42)||hero.mp<=Math.round(hero.maxMp*.25)){autoCamp();return}
+    if(Math.random()<.28&&autoTreasure())return;
+    if((hero.story.chapter>=3||stage>=3)&&!hero.story.ruin&&Math.random()<.55){autoVisitRuin();return}
+    if(stage>=enemies.length-1&&hero.story.key){jumpToTile('B');startMapBattle('🏰 魔王城へ自動移動した！');return}
+    startMapBattle('🗺️ フィールド探索中に敵と遭遇した！');
   }
   function movePlayer(dx,dy){
     if(gameOver)return;
@@ -454,13 +518,13 @@
     if(mapState.steps>=mapState.encounterAfter||Math.random()<forestBonus){
       mapState.steps=0;mapState.encounterAfter=rand(4,8);startMapBattle(ch==='F'?'🌲 森の中から敵が飛び出した！':'⚔️ 敵と遭遇した！');return;
     }
-    mapMessage(`${def.icon} ${def.name}を進んだ。あと少し歩くと敵に遭遇しそうです。`);
+    mapMessage(`${def.icon} ${def.name}を歩いている。エンカウント気配が少しずつ高まっている……`);
     render();
   }
 
 function resetGame(){
     hero={level:1,maxHp:100,hp:100,maxMp:30,mp:30,attack:10,defense:2,magic:8,job:'hero',weapon:'wood_sword',armor:'cloth',ownedWeapons:['wood_sword'],ownedArmors:['cloth'],exp:0,totalExp:0,expNext:40,potions:3,gold:0,guarding:false,story:{chapter:0,completed:[],visitedVillage:false,ruin:false,seals:0,clues:0,key:false,cleared:false}};
-    stage=0;locked=false;gameOver=false;mapMode=false;heroEl.classList.remove('defeated');enemyEl.classList.remove('defeated');initMap();nextEnemy(true);enterMapMode('🏠 まにまにクエスト開始！港町ミナトで語り部に会い、物語を進めましょう。');storyPanel.classList.add('open');renderStoryPanel();
+    stage=0;locked=false;gameOver=false;mapMode=false;heroEl.classList.remove('defeated');enemyEl.classList.remove('defeated');initMap();nextEnemy(true);enterMapMode('🏠 まにまにクエスト開始！フィールドをジョイスティックで歩き、ランダムエンカウントで敵と戦いましょう。迷った時だけ目的地ボタンを使えます。');storyPanel.classList.add('open');renderStoryPanel();
   }
   function nextEnemy(first=false){
     const base=enemies[Math.min(stage,enemies.length-1)];
@@ -480,7 +544,7 @@ function resetGame(){
     shopBtns.forEach(btn=>{const [type,id]=(btn.dataset.shop||'').split(':'),item=equipmentItem(type,id),owned=item&&ownsEquipment(type,id),current=item&&((type==='weapon'&&hero.weapon===id)||(type==='armor'&&hero.armor===id)),unlocked=item&&equipmentUnlocked(item),buyable=item&&unlocked&&hero.gold>=item.price;btn.disabled=locked||gameOver||!item||!unlocked||(!owned&&!buyable);btn.classList.toggle('shop-locked',!unlocked||(!owned&&!buyable));btn.classList.toggle('shop-buyable',!!(!owned&&buyable));btn.classList.toggle('equip-current',!!current);const sm=btn.querySelector('small');if(sm&&item)sm.textContent=current?'装備中':owned?'購入済み / 付け替え':unlocked?`${item.price}G / ${item.caption}`:`Lv.${item.level}で解放`;});
     const battleLocked=locked||gameOver||mapMode;
     skillBtn.disabled=battleLocked||hero.mp<skillCost();healBtn.disabled=battleLocked||hero.potions<=0||hero.hp>=hero.maxHp;attackBtn.disabled=battleLocked;guardBtn.disabled=battleLocked;magicBtn.disabled=battleLocked||!learnedSpellIds().some(id=>hero.mp>=spellCost(id));jobBtn.disabled=locked||gameOver;shopBtn.disabled=locked||gameOver;mapBtn.disabled=locked||gameOver;
-    if(mapText)mapText.textContent=mapMode?'操作中：矢印で移動':'MAPを開く';
+    if(mapText)mapText.textContent=mapMode?'フィールド移動中':'ジョイスティック探索';
     renderStoryPanel();
     renderMap();
   }
@@ -530,7 +594,7 @@ function resetGame(){
     enterMapMode('勝利！MAP探索に戻りました。物語統括で次の目的を確認しましょう。');locked=false;render();
   }
   function defeat(){hero.hp=0;heroEl.classList.add('defeated');gameOver=true;locked=true;mapMode=false;stopBgm();updateBgmText();setMessage(`<strong>あなたは倒れてしまった……</strong><br>「最初から」で再挑戦できます。`);render()}
-  mapBtn.addEventListener('click',toggleMapPanel);storyBtn.addEventListener('click',toggleStoryPanel);moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));window.addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};const k=keys[e.key];if(k&&mapMode){e.preventDefault();movePlayer(k[0],k[1])}});attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));bgmBtn.addEventListener('click',toggleBgm);restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();window.__storyForCheck=()=>{storyPanel.classList.add('open');renderStoryPanel();return hero.story};resetGame();
+  mapBtn.addEventListener('click',()=>{if(!mapMode)enterMapMode();else toggleMapPanel()});storyBtn.addEventListener('click',toggleStoryPanel);if(autoExploreBtn)autoExploreBtn.addEventListener('click',()=>autoMapAction('auto'));if(objectiveBtn)objectiveBtn.addEventListener('click',()=>autoMapAction('objective'));moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));bgmBtn.addEventListener('click',toggleBgm);restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();window.__storyForCheck=()=>{storyPanel.classList.add('open');renderStoryPanel();return hero.story};resetGame();
 })();
 </script>
 </body></html>
