@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
   <meta name="theme-color" content="#111827" />
-  <title>まにまにクエスト</title>
+  <title>まにまにクエスト - 統括ストーリー版</title>
   <style>
     :root{--bg1:#0f172a;--bg2:#1e293b;--panel:rgba(15,23,42,.86);--line:rgba(255,255,255,.12);--text:#f8fafc;--muted:#cbd5e1}
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -43,14 +43,15 @@
     .cmd small{display:block;font-size:11px;font-weight:600;margin-top:3px;color:rgba(255,255,255,.75)}.cmd:active{transform:scale(.97)}.cmd:disabled{opacity:.38;cursor:default}
     .attack{background:linear-gradient(135deg,#b45309,#f59e0b)}.skill{background:linear-gradient(135deg,#6d28d9,#a78bfa)}.heal{background:linear-gradient(135deg,#047857,#10b981)}.guard{background:linear-gradient(135deg,#334155,#64748b)}.map,.magic,.job,.shop{grid-column:1/-1}.magic{background:linear-gradient(135deg,#7c3aed,#06b6d4)}.job{background:linear-gradient(135deg,#92400e,#ef4444)}.shop{background:linear-gradient(135deg,#0f766e,#ca8a04)}.spell{background:linear-gradient(135deg,#312e81,#0f766e)}.job-choice{background:linear-gradient(135deg,#422006,#7f1d1d)}.shop-choice{background:linear-gradient(135deg,#164e63,#854d0e)}.magic-panel,.job-panel,.shop-panel{grid-column:1/-1;display:none;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.magic-panel.open,.job-panel.open,.shop-panel.open{display:grid}.magic-panel .cmd,.job-panel .cmd,.shop-panel .cmd{min-height:50px;font-size:14px}.spell-locked,.job-locked,.shop-locked{opacity:.34}.spell-ready,.job-current,.equip-current{box-shadow:0 0 0 2px rgba(250,204,21,.24)}.shop-buyable{box-shadow:0 0 0 2px rgba(52,211,153,.22)}
     .map{background:linear-gradient(135deg,#1d4ed8,#16a34a)}.map-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.map-panel.open{display:block}.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:#e2e8f0;font-weight:900}.map-help{color:var(--muted);font-size:11px;line-height:1.35}.map-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:8px 0}.map-tile{aspect-ratio:1/1;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(15,23,42,.7);display:grid;place-items:center;font-size:clamp(18px,6vw,30px);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.map-tile.forest{background:rgba(22,101,52,.55)}.map-tile.water{background:rgba(14,116,144,.5)}.map-tile.treasure{background:rgba(146,64,14,.58)}.map-tile.camp{background:rgba(6,95,70,.58)}.map-tile.boss{background:rgba(127,29,29,.66)}.map-tile.start{background:rgba(59,130,246,.38)}.map-player{position:absolute;inset:6%;display:grid;place-items:center;border-radius:50%;background:rgba(250,204,21,.92);box-shadow:0 0 18px rgba(250,204,21,.55);font-size:clamp(17px,5.4vw,28px);animation:playerPulse 1.2s ease-in-out infinite}@keyframes playerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.map-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:280px;margin:10px auto 0}.move-btn{min-height:44px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:linear-gradient(135deg,#334155,#0f766e);color:#fff;font-size:20px;font-weight:900}.move-btn:active{transform:scale(.97)}.move-spacer{min-height:44px}.map-idle{opacity:.32;filter:grayscale(.4)}
-    .footer-row{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:12px}.restart{border:1px solid var(--line);border-radius:12px;padding:9px 12px;color:white;background:rgba(255,255,255,.08);font-weight:800}
+        .story{grid-column:1/-1;background:linear-gradient(135deg,#4338ca,#be123c)}.story-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:linear-gradient(160deg,rgba(49,46,129,.28),rgba(88,28,135,.18));border:1px solid rgba(216,180,254,.28)}.story-panel.open{display:block}.story-head,.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:900;color:#fde68a;margin-bottom:8px}.story-box,.quest-box{border:1px solid rgba(255,255,255,.12);background:rgba(15,23,42,.55);border-radius:14px;padding:10px;margin-top:8px;line-height:1.55;font-size:13px}.chapter-title{font-size:15px;font-weight:900;color:#fff;margin-bottom:4px}.quest-line{color:#bfdbfe;font-weight:800}.story-note{color:#d8b4fe}.system-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.system-tags span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 8px;background:rgba(255,255,255,.08);font-size:11px;font-weight:800}.ending-glow{animation:endingGlow 1.2s ease infinite alternate}@keyframes endingGlow{from{filter:drop-shadow(0 0 6px rgba(250,204,21,.35))}to{filter:drop-shadow(0 0 20px rgba(250,204,21,.95))}}
+.footer-row{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:12px}.restart{border:1px solid var(--line);border-radius:12px;padding:9px 12px;color:white;background:rgba(255,255,255,.08);font-weight:800}
     @media(max-width:430px){.header{padding:13px 14px 8px}.battlefield{min-height:335px}.status-grid{top:10px;left:10px;right:10px;gap:7px}.card{padding:8px}.bar-row{grid-template-columns:28px 1fr 46px;gap:4px}.hero{left:5%}.enemy{right:5%}.sprite{font-size:76px}.portrait-sprite{width:92px;height:92px}.lower{padding:11px}.message{min-height:62px;font-size:14px}.commands{gap:8px}.cmd{min-height:54px;font-size:15px}}
     @media(max-height:720px){.battlefield{min-height:300px}.character{bottom:68px}.sprite{font-size:70px}.portrait-sprite{width:78px;height:78px}.message{min-height:54px}.cmd{min-height:49px}}
   </style>
 </head>
 <body>
   <main class="game">
-    <header class="header"><h1>まにまにクエスト</h1><div class="meta"><div>敵を倒してレベルアップ</div><div id="stageLabel">STAGE 1</div></div></header>
+    <header class="header"><h1>まにまにクエスト</h1><div class="meta"><div>物語・MAP・育成統括RPG</div><div id="stageLabel">STAGE 1</div></div></header>
     <section class="battlefield" id="battlefield">
       <div class="moon"></div><div class="ground"></div>
       <div class="status-grid">
@@ -70,9 +71,14 @@
     </section>
     <section class="lower">
       <div class="message" id="message">歌い手があらわれた！ コマンドを選んでください。</div>
+      <div class="story-panel" id="storyPanel">
+        <div class="story-head"><span>📜 物語統括</span><span id="chapterText">第1章</span></div>
+        <div class="story-box" id="storyText">まにまにの鐘が鳴り、冒険が始まる。</div>
+        <div class="quest-box" id="questText">現在の目的を確認できます。</div>
+      </div>
       <div class="map-panel" id="mapPanel">
         <div class="map-head"><span>🗺️ 冒険MAP</span><span id="mapPosText">X1 Y7</span></div>
-        <div class="map-help" id="mapInfoText">十字キーで主人公を操作。森では敵、宝箱ではG、キャンプでは回復。</div>
+        <div class="map-help" id="mapInfoText">十字キーで主人公を操作。町・祠・宝箱・魔王城で物語が進みます。</div>
         <div class="map-grid" id="mapGrid" aria-label="冒険マップ"></div>
         <div class="map-controls">
           <div class="move-spacer"></div><button class="move-btn" data-move="0,-1" aria-label="上へ移動">▲</button><div class="move-spacer"></div>
@@ -85,6 +91,7 @@
         <button class="cmd heal" id="healBtn">🧪 回復薬<small id="potionText">残り3個</small></button>
         <button class="cmd guard" id="guardBtn">🛡️ 防御<small>次の被ダメージ半減</small></button>
         <button class="cmd map" id="mapBtn">🗺️ MAP<small id="mapText">冒険に出る</small></button>
+        <button class="cmd story" id="storyBtn">📜 物語<small id="storyBtnText">現在の目的</small></button>
         <button class="cmd magic" id="magicBtn">✨ 魔法<small id="magicText">ファイア MP 6</small></button>
         <div class="magic-panel" id="magicPanel">
           <button class="cmd spell" data-spell="fire">🔥 ファイア<small>Lv1 / MP6</small></button>
@@ -133,7 +140,7 @@
   const enemyFaces=[...document.querySelectorAll('.enemy-face')];
   function showEnemyPortrait(index){const shown=Math.min(index,enemyFaces.length-1);enemyFaces.forEach((img,i)=>img.classList.toggle('active',i===shown));}
   const stageLabel=$('stageLabel'),potionText=$('potionText'),goldText=$('goldText');
-  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),restartBtn=$('restartBtn');
+  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),storyBtn=$('storyBtn'),storyBtnText=$('storyBtnText'),storyPanel=$('storyPanel'),storyText=$('storyText'),questText=$('questText'),chapterText=$('chapterText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),restartBtn=$('restartBtn');
   const spellBtns=[...document.querySelectorAll('[data-spell]')];
   const jobBtns=[...document.querySelectorAll('[data-job]')];
   const shopBtns=[...document.querySelectorAll('[data-shop]')];
@@ -196,10 +203,10 @@
   function magicButtonCaption(){if(!hero)return 'ファイア MP 6';const id=bestSpell(),sp=spells[id];return `${sp.name}まで習得 / MP${spellCost(id)}`}
   function jobButtonCaption(){if(!hero)return '勇者：バランス型';const j=currentJob();return `${j.icon} ${j.name}：${j.caption}`}
   function shopButtonCaption(){if(!hero)return '武器・防具を買う';return `${currentWeapon().icon}${currentWeapon().name} / ${currentArmor().icon}${currentArmor().name}`}
-  function toggleMagicPanel(){if(locked||gameOver)return;jobPanel.classList.remove('open');shopPanel.classList.remove('open');magicPanel.classList.toggle('open');setMessage(magicPanel.classList.contains('open')?'使う魔法を選んでください。Lvが上がると新しい魔法を覚えます。':'あなたの番です。コマンドを選んでください。');render()}
-  function toggleJobPanel(){if(locked||gameOver)return;magicPanel.classList.remove('open');shopPanel.classList.remove('open');jobPanel.classList.toggle('open');setMessage(jobPanel.classList.contains('open')?'転職先を選んでください。職業によって攻撃・防御・魔法・会心率が変わります。':'あなたの番です。コマンドを選んでください。');render()}
-  function toggleShopPanel(){if(locked||gameOver)return;magicPanel.classList.remove('open');jobPanel.classList.remove('open');shopPanel.classList.toggle('open');setMessage(shopPanel.classList.contains('open')?'装備屋です。Gで武器・防具を購入できます。購入済みの装備は無料で付け替えできます。':'あなたの番です。コマンドを選んでください。');render()}
-  function closePanels(){magicPanel.classList.remove('open');jobPanel.classList.remove('open');shopPanel.classList.remove('open')}
+  function toggleMagicPanel(){if(locked||gameOver)return;jobPanel.classList.remove('open');shopPanel.classList.remove('open');storyPanel.classList.remove('open');magicPanel.classList.toggle('open');setMessage(magicPanel.classList.contains('open')?'使う魔法を選んでください。Lvが上がると新しい魔法を覚えます。':'あなたの番です。コマンドを選んでください。');render()}
+  function toggleJobPanel(){if(locked||gameOver)return;magicPanel.classList.remove('open');shopPanel.classList.remove('open');storyPanel.classList.remove('open');jobPanel.classList.toggle('open');setMessage(jobPanel.classList.contains('open')?'転職先を選んでください。職業によって攻撃・防御・魔法・会心率が変わります。':'あなたの番です。コマンドを選んでください。');render()}
+  function toggleShopPanel(){if(locked||gameOver)return;magicPanel.classList.remove('open');jobPanel.classList.remove('open');storyPanel.classList.remove('open');shopPanel.classList.toggle('open');setMessage(shopPanel.classList.contains('open')?'装備屋です。Gで武器・防具を購入できます。購入済みの装備は無料で付け替えできます。':'あなたの番です。コマンドを選んでください。');render()}
+  function closePanels(){magicPanel.classList.remove('open');jobPanel.classList.remove('open');shopPanel.classList.remove('open');storyPanel.classList.remove('open')}
   function switchJob(id){if(locked||gameOver||!hasJob(id))return;hero.job=id;closePanels();const j=currentJob();animateClass(heroEl,'cast',500);floatEffect(heroEl,`${j.icon} 転職!`,'#facc15');setMessage(`<strong>${j.icon} ${j.name}</strong>に転職した！<br>${j.caption}。ステータス補正が反映されます。`);render()}
   function buyOrEquipEquipment(type,id){
     if(locked||gameOver)return;const item=equipmentItem(type,id);if(!item)return;
@@ -240,16 +247,99 @@
   }
   
 
+  const storyChapters=[
+    {title:'第1章 旅立ちの鐘',objective:'港町ミナトで語り部に会う、または最初の魔物を倒す。',detail:'まにまに地方の古い鐘が鳴った。鐘は「だれかが魔王まにまにを起こした」合図だという。まずは港町で噂を集めよう。'},
+    {title:'第2章 歌声の森',objective:'歌い手を倒し、森に響く不思議な歌の正体を追う。',detail:'歌声は人を眠らせ、道を惑わせる。森の奥に進むには、戦いで経験を積み、装備を整える必要がある。'},
+    {title:'第3章 マダムの手紙',objective:'マダムを倒し、港町に残された手紙を読み解く。',detail:'手紙には「魔王城の門を開くには、古い祠のまにまに紋章が必要」と書かれていた。'},
+    {title:'第4章 古代祠のまにまに紋章',objective:'ドクターを倒す、またはMAP上の祠を調べて紋章を入手する。',detail:'ドクターは古文書の守り手だった。祠に眠る紋章は、魔王城の結界を弱める鍵になる。'},
+    {title:'第5章 ピースの使い手',objective:'ピースの使い手を倒し、魔王城の鍵を完成させる。',detail:'最後の守護者は、争いを止める力を悪用されていた。勝てば魔王城への道が開く。'},
+    {title:'最終章 魔王まにまに',objective:'魔王城へ向かい、魔王まにまにを倒す。',detail:'魔王まにまには、人の気まぐれを集めて世界をゆるく支配しようとしている。全ての成長要素を使い、決戦に挑め。'},
+    {title:'エピローグ まにまにの夜明け',objective:'クリア後のMAPを自由に探索し、さらなる強化を目指す。',detail:'鐘の音は静まり、まにまに地方に朝が来た。けれど冒険は終わらない。強敵は何度でも現れる。'}
+  ];
+  const storyRewards=[
+    h=>{h.gold+=45;h.potions=Math.min(9,h.potions+1);return '港町の人々から45Gと回復薬を受け取った。'},
+    h=>{h.gold+=60;return '歌声の森の安全を取り戻し、60Gを獲得。'},
+    h=>{h.gold+=80;h.story.clues++;return 'マダムの手紙を入手。80Gと物語の手がかりを獲得。'},
+    h=>{h.magic+=2;h.story.seals=Math.max(h.story.seals,1);return 'まにまに紋章を入手。MAG+2。'},
+    h=>{h.gold+=120;h.story.key=true;return '魔王城の鍵が完成。120Gを獲得。'},
+    h=>{h.gold+=300;h.story.cleared=true;return '魔王まにまにを倒した証として300Gを獲得。'},
+    h=>'クリア後モード解放。'
+  ];
+  const battleIntros=[
+    '森に響く歌声が、足元の草を震わせた。',
+    '港町の手紙を握るマダムが、道をふさいでいる。',
+    '古代祠の前で、ドクターが古文書を閉じた。',
+    'ピースの使い手が、魔王城の門を守っている。',
+    '魔王城の玉座で、魔王まにまにがゆっくり振り返った。'
+  ];
+  function currentChapter(){return storyChapters[Math.min(hero?.story?.chapter||0,storyChapters.length-1)]}
+  function storyCondition(index){
+    if(!hero)return false;
+    if(index===0)return hero.story.visitedVillage||stage>=1;
+    if(index===1)return stage>=1;
+    if(index===2)return stage>=2;
+    if(index===3)return hero.story.seals>0||stage>=3;
+    if(index===4)return stage>=4;
+    if(index===5)return hero.story.cleared;
+    return false;
+  }
+  function advanceStory(){
+    if(!hero?.story)return [];
+    const logs=[];
+    if(hero.story.chapter<storyChapters.length-1&&storyCondition(hero.story.chapter)){
+      const before=storyChapters[hero.story.chapter];
+      const reward=storyRewards[hero.story.chapter]?.(hero)||'';
+      hero.story.completed.push(before.title);
+      hero.story.chapter++;
+      const next=storyChapters[hero.story.chapter];
+      logs.push(`<strong>${before.title} 完了</strong>：${reward}<br>→ ${next.title}`);
+    }
+    renderStoryPanel();
+    return logs;
+  }
+  function progressText(){
+    const ch=hero?.story?.chapter||0;
+    if(ch===0)return hero.story.visitedVillage?'港町で語り部と会話済み。最初の敵を倒そう。':'港町ミナトか草原へ向かおう。';
+    if(ch===1)return `歌い手討伐：${stage>=1?'完了':'未完了'}`;
+    if(ch===2)return `マダム討伐：${stage>=2?'完了':'未完了'} / 手がかり ${hero.story.clues}`;
+    if(ch===3)return `まにまに紋章：${hero.story.seals>0?'入手済み':'未入手'} / ドクター討伐：${stage>=3?'完了':'未完了'}`;
+    if(ch===4)return `魔王城の鍵：${hero.story.key?'完成':'未完成'} / ピースの使い手：${stage>=4?'撃破':'未撃破'}`;
+    if(ch===5)return hero.story.cleared?'魔王まにまに撃破済み':'魔王城へ向かえ。';
+    return 'クリア後探索中。';
+  }
+  function renderStoryPanel(){
+    if(!storyText||!hero)return;
+    const ch=currentChapter();
+    chapterText.textContent=ch.title;
+    if(storyBtnText)storyBtnText.textContent=ch.title.replace(/^第\d章\s*/,'').replace(/^最終章\s*/,'最終決戦：');
+    const tags=[`Lv.${hero.level}`,currentJob().name,`${currentWeapon().name}`,`${currentArmor().name}`,`G ${hero.gold}`,`紋章 ${hero.story.seals}`,hero.story.key?'魔王城の鍵あり':'鍵なし'];
+    storyText.innerHTML=`<div class="chapter-title">${ch.title}</div><div class="story-note">${ch.detail}</div><div class="system-tags">${tags.map(t=>`<span>${t}</span>`).join('')}</div>`;
+    questText.innerHTML=`<div class="quest-line">現在の目的：${ch.objective}</div><div>進行状況：${progressText()}</div><div>完了章：${hero.story.completed.length?hero.story.completed.join(' / '):'なし'}</div>`;
+  }
+  function toggleStoryPanel(){
+    if(!storyPanel)return;
+    magicPanel.classList.remove('open');jobPanel.classList.remove('open');shopPanel.classList.remove('open');
+    storyPanel.classList.toggle('open');renderStoryPanel();
+    setMessage(storyPanel.classList.contains('open')?'物語統括を表示しました。現在の目的・進行状況・解放状態を確認できます。':'物語統括を閉じました。');
+  }
+  function storyBattleIntro(){return battleIntros[Math.min(stage,battleIntros.length-1)]||'気配が濃くなり、敵が姿を現した。'}
+  function endingSequence(){
+    heroEl.classList.add('ending-glow');enemyEl.classList.add('defeated');storyPanel.classList.add('open');renderStoryPanel();
+    setMessage(`<strong>エンディング</strong><br>魔王まにまには倒れ、まにまに地方に朝が来た。<br>しかし冒険者の旅は続く。MAP探索・転職・装備強化で、さらに強い敵へ挑めます。`);
+  }
+
   const mapTileDefs={
     '.':{icon:'🌿',name:'草原',cls:'plain'},
     'F':{icon:'🌲',name:'森',cls:'forest'},
     '~':{icon:'🌊',name:'水辺',cls:'water',block:true},
     'T':{icon:'💰',name:'宝箱',cls:'treasure'},
     'C':{icon:'⛺',name:'キャンプ',cls:'camp'},
+    'V':{icon:'🏘️',name:'港町ミナト',cls:'start'},
+    'R':{icon:'🗿',name:'古代祠',cls:'treasure'},
     'B':{icon:'🏰',name:'魔王城',cls:'boss'},
     'S':{icon:'🏠',name:'出発地点',cls:'start'}
   };
-  const baseMapRows=['..T..F.','.F...T.','...~...','.T..F..','..C....','F...T.B','S......'];
+  const baseMapRows=['..T..F.','.F.R.T.','...~...','.T..F..','..C....','F.V.T.B','S......'];
   function initMap(){mapState={x:0,y:6,steps:0,encounterAfter:rand(4,7),tiles:baseMapRows.map(r=>r.split(''))};}
   function tileAt(x=mapState.x,y=mapState.y){return mapState.tiles[y]?.[x]||'.'}
   function setTile(x,y,v){if(mapState.tiles[y])mapState.tiles[y][x]=v}
@@ -275,7 +365,7 @@
   }
   function startMapBattle(text='敵と遭遇した！'){
     mapMode=false;mapPanel.classList.remove('open');enemyEl.classList.remove('map-idle');
-    nextEnemy(false);setMessage(`${text}<br>${enemy.name}があらわれた！`);locked=false;render();
+    nextEnemy(false);setMessage(`${text}<br>${storyBattleIntro()}<br>${enemy.name}があらわれた！`);locked=false;render();
   }
   function toggleMapPanel(){
     if(gameOver)return;
@@ -299,7 +389,18 @@
       hero.hp=hero.maxHp;hero.mp=hero.maxMp;hero.potions=Math.min(9,hero.potions+1);
       floatEffect(heroEl,'全回復','#86efac');mapMessage('⛺ キャンプで休憩した。HPとMPが全回復し、回復薬が1個増えた。');render();return;
     }
+    if(ch==='V'){
+      if(!hero.story.visitedVillage){hero.story.visitedVillage=true;const logs=advanceStory();floatEffect(heroEl,'町の噂','#bfdbfe');mapMessage(`🏘️ 港町ミナトの語り部「鐘が鳴ったなら、魔王城の封印が揺れている証じゃ。まずは歌声の森へ向かいなさい。」${logs.length?'<br>'+logs.join('<br>'):''}`)}
+      else mapMessage('🏘️ 港町ミナト。人々はあなたの旅を応援している。装備と転職を整えて進もう。');
+      render();renderMap();return;
+    }
+    if(ch==='R'){
+      if(!hero.story.ruin){hero.story.ruin=true;hero.story.seals=Math.max(hero.story.seals,1);hero.magic+=2;const logs=advanceStory();floatEffect(heroEl,'紋章入手','#facc15');mapMessage(`🗿 古代祠で「まにまに紋章」を手に入れた！ MAG+2。${logs.length?'<br>'+logs.join('<br>'):''}`)}
+      else mapMessage('🗿 古代祠。紋章の光が魔王城の方角を示している。');
+      render();renderMap();return;
+    }
     if(ch==='B'){
+      if(!hero.story.key&&stage<enemies.length-1){mapMessage('🏰 魔王城の門は閉ざされている。ピースの使い手を倒し、魔王城の鍵を完成させよう。');renderMap();return}
       stage=Math.max(stage,enemies.length-1);startMapBattle('🏰 魔王城に踏み込んだ！');return;
     }
     const forestBonus=ch==='F'?0.18:0;
@@ -311,8 +412,8 @@
   }
 
 function resetGame(){
-    hero={level:1,maxHp:100,hp:100,maxMp:30,mp:30,attack:10,defense:2,magic:8,job:'hero',weapon:'wood_sword',armor:'cloth',ownedWeapons:['wood_sword'],ownedArmors:['cloth'],exp:0,totalExp:0,expNext:40,potions:3,gold:0,guarding:false};
-    stage=0;locked=false;gameOver=false;mapMode=false;heroEl.classList.remove('defeated');enemyEl.classList.remove('defeated');initMap();nextEnemy(true);enterMapMode('🏠 まにまにクエスト開始！MAPで主人公を操作して冒険へ出発してください。');
+    hero={level:1,maxHp:100,hp:100,maxMp:30,mp:30,attack:10,defense:2,magic:8,job:'hero',weapon:'wood_sword',armor:'cloth',ownedWeapons:['wood_sword'],ownedArmors:['cloth'],exp:0,totalExp:0,expNext:40,potions:3,gold:0,guarding:false,story:{chapter:0,completed:[],visitedVillage:false,ruin:false,seals:0,clues:0,key:false,cleared:false}};
+    stage=0;locked=false;gameOver=false;mapMode=false;heroEl.classList.remove('defeated');enemyEl.classList.remove('defeated');initMap();nextEnemy(true);enterMapMode('🏠 まにまにクエスト開始！港町ミナトで語り部に会い、物語を進めましょう。');storyPanel.classList.add('open');renderStoryPanel();
   }
   function nextEnemy(first=false){
     const base=enemies[Math.min(stage,enemies.length-1)];
@@ -333,6 +434,7 @@ function resetGame(){
     const battleLocked=locked||gameOver||mapMode;
     skillBtn.disabled=battleLocked||hero.mp<skillCost();healBtn.disabled=battleLocked||hero.potions<=0||hero.hp>=hero.maxHp;attackBtn.disabled=battleLocked;guardBtn.disabled=battleLocked;magicBtn.disabled=battleLocked||!learnedSpellIds().some(id=>hero.mp>=spellCost(id));jobBtn.disabled=locked||gameOver;shopBtn.disabled=locked||gameOver;mapBtn.disabled=locked||gameOver;
     if(mapText)mapText.textContent=mapMode?'操作中：矢印で移動':'MAPを開く';
+    renderStoryPanel();
     renderMap();
   }
   function setMessage(text){messageEl.innerHTML=text}
@@ -368,14 +470,20 @@ function resetGame(){
     if(hero.hp<=0){defeat();return}locked=false;setMessage(`あなたの番です。コマンドを選んでください。`);render();
   }
   async function victory(){
+    const defeatedName=enemy.name;
     enemy.hp=0;enemyEl.classList.add('defeated');const gainedExp=enemy.exp+Math.max(0,stage-enemies.length+1)*12,gainedGold=Math.round((enemy.gold+Math.max(0,stage-enemies.length+1)*10)*currentJob().gold);hero.exp+=gainedExp;hero.totalExp+=gainedExp;hero.gold+=gainedGold;
     setMessage(`${enemy.name}を倒した！ <strong>${gainedExp}EXP</strong> と <strong>${gainedGold}G</strong> を獲得！`);render();await sleep(1050);
     const levelLogs=applyLevelUp();
     if(levelLogs.length){floatEffect(heroEl,'LEVEL UP!','#facc15');animateClass(heroEl,'cast',600);setMessage(`<strong>レベルアップ！</strong><br>${levelLogs.join('<br>')}<br>HPとMPが全回復した！`);render();await sleep(1700)}
-    stage++;enterMapMode('勝利！MAP探索に戻りました。歩いて次の敵を探しましょう。');locked=false;render();
+    if(defeatedName==='魔王まにまに')hero.story.cleared=true;
+    stage++;
+    const storyLogs=advanceStory();
+    if(storyLogs.length){storyPanel.classList.add('open');setMessage(`<strong>物語が進行しました！</strong><br>${storyLogs.join('<br>')}`);render();await sleep(1900)}
+    if(defeatedName==='魔王まにまに'){endingSequence();locked=false;render();return}
+    enterMapMode('勝利！MAP探索に戻りました。物語統括で次の目的を確認しましょう。');locked=false;render();
   }
   function defeat(){hero.hp=0;heroEl.classList.add('defeated');gameOver=true;locked=true;mapMode=false;setMessage(`<strong>あなたは倒れてしまった……</strong><br>「最初から」で再挑戦できます。`);render()}
-  mapBtn.addEventListener('click',toggleMapPanel);moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));window.addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};const k=keys[e.key];if(k&&mapMode){e.preventDefault();movePlayer(k[0],k[1])}});attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();resetGame();
+  mapBtn.addEventListener('click',toggleMapPanel);storyBtn.addEventListener('click',toggleStoryPanel);moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));window.addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};const k=keys[e.key];if(k&&mapMode){e.preventDefault();movePlayer(k[0],k[1])}});attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();window.__storyForCheck=()=>{storyPanel.classList.add('open');renderStoryPanel();return hero.story};resetGame();
 })();
 </script>
 </body></html>
