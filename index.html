@@ -25,10 +25,14 @@
     @keyframes lunge{0%,100%{transform:translateX(0)}45%{transform:translateX(38px) scale(1.05)}}
     @keyframes cast{0%,100%{filter:drop-shadow(0 14px 12px rgba(0,0,0,.38))}50%{filter:drop-shadow(0 0 25px #a78bfa) brightness(1.45);transform:translateY(-8px)}}
     .effect{position:absolute;pointer-events:none;font-weight:900;font-size:32px;text-shadow:0 3px 10px rgba(0,0,0,.55);animation:floatUp .85s ease forwards;z-index:5}
+    .effect.critical{font-size:38px;text-shadow:0 0 12px rgba(250,204,21,.8),0 3px 10px rgba(0,0,0,.65)}
     @keyframes floatUp{0%{opacity:0;transform:translateY(8px) scale(.8)}15%{opacity:1}100%{opacity:0;transform:translateY(-55px) scale(1.16)}}
     .status-grid{position:absolute;left:14px;right:14px;top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;z-index:3}
     .card{background:rgba(15,23,42,.82);border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
     .card-title{display:flex;justify-content:space-between;gap:8px;font-weight:900;font-size:13px;margin-bottom:7px}
+
+    .hero-rank{margin:-2px 0 7px;color:#fde68a;font-size:12px;font-weight:900;letter-spacing:.03em}
+    .stat-line{margin-bottom:6px;color:#c4b5fd;font-size:11px;font-weight:800;letter-spacing:.02em}
     .bar-row{display:grid;grid-template-columns:30px 1fr 54px;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-top:5px}
     .bar{height:10px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.08)}.fill{height:100%;width:100%;border-radius:inherit;transition:width .35s ease}
     .hp{background:linear-gradient(90deg,#16a34a,#4ade80)}.enemy-hp{background:linear-gradient(90deg,#dc2626,#fb7185)}.mp{background:linear-gradient(90deg,#0284c7,#38bdf8)}.exp{background:linear-gradient(90deg,#7c3aed,#c084fc)}
@@ -37,7 +41,8 @@
     .commands{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
     .cmd{min-height:58px;border:1px solid rgba(255,255,255,.14);border-radius:16px;color:white;background:rgba(255,255,255,.08);font-size:16px;font-weight:900;cursor:pointer;touch-action:manipulation;transition:transform .08s ease,filter .15s ease,opacity .2s ease}
     .cmd small{display:block;font-size:11px;font-weight:600;margin-top:3px;color:rgba(255,255,255,.75)}.cmd:active{transform:scale(.97)}.cmd:disabled{opacity:.38;cursor:default}
-    .attack{background:linear-gradient(135deg,#b45309,#f59e0b)}.skill{background:linear-gradient(135deg,#6d28d9,#a78bfa)}.heal{background:linear-gradient(135deg,#047857,#10b981)}.guard{background:linear-gradient(135deg,#334155,#64748b)}
+    .attack{background:linear-gradient(135deg,#b45309,#f59e0b)}.skill{background:linear-gradient(135deg,#6d28d9,#a78bfa)}.heal{background:linear-gradient(135deg,#047857,#10b981)}.guard{background:linear-gradient(135deg,#334155,#64748b)}.map,.magic,.job,.shop{grid-column:1/-1}.magic{background:linear-gradient(135deg,#7c3aed,#06b6d4)}.job{background:linear-gradient(135deg,#92400e,#ef4444)}.shop{background:linear-gradient(135deg,#0f766e,#ca8a04)}.spell{background:linear-gradient(135deg,#312e81,#0f766e)}.job-choice{background:linear-gradient(135deg,#422006,#7f1d1d)}.shop-choice{background:linear-gradient(135deg,#164e63,#854d0e)}.magic-panel,.job-panel,.shop-panel{grid-column:1/-1;display:none;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.magic-panel.open,.job-panel.open,.shop-panel.open{display:grid}.magic-panel .cmd,.job-panel .cmd,.shop-panel .cmd{min-height:50px;font-size:14px}.spell-locked,.job-locked,.shop-locked{opacity:.34}.spell-ready,.job-current,.equip-current{box-shadow:0 0 0 2px rgba(250,204,21,.24)}.shop-buyable{box-shadow:0 0 0 2px rgba(52,211,153,.22)}
+    .map{background:linear-gradient(135deg,#1d4ed8,#16a34a)}.map-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.map-panel.open{display:block}.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:#e2e8f0;font-weight:900}.map-help{color:var(--muted);font-size:11px;line-height:1.35}.map-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:8px 0}.map-tile{aspect-ratio:1/1;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(15,23,42,.7);display:grid;place-items:center;font-size:clamp(18px,6vw,30px);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.map-tile.forest{background:rgba(22,101,52,.55)}.map-tile.water{background:rgba(14,116,144,.5)}.map-tile.treasure{background:rgba(146,64,14,.58)}.map-tile.camp{background:rgba(6,95,70,.58)}.map-tile.boss{background:rgba(127,29,29,.66)}.map-tile.start{background:rgba(59,130,246,.38)}.map-player{position:absolute;inset:6%;display:grid;place-items:center;border-radius:50%;background:rgba(250,204,21,.92);box-shadow:0 0 18px rgba(250,204,21,.55);font-size:clamp(17px,5.4vw,28px);animation:playerPulse 1.2s ease-in-out infinite}@keyframes playerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.map-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:280px;margin:10px auto 0}.move-btn{min-height:44px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:linear-gradient(135deg,#334155,#0f766e);color:#fff;font-size:20px;font-weight:900}.move-btn:active{transform:scale(.97)}.move-spacer{min-height:44px}.map-idle{opacity:.32;filter:grayscale(.4)}
     .footer-row{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:12px}.restart{border:1px solid var(--line);border-radius:12px;padding:9px 12px;color:white;background:rgba(255,255,255,.08);font-weight:800}
     @media(max-width:430px){.header{padding:13px 14px 8px}.battlefield{min-height:335px}.status-grid{top:10px;left:10px;right:10px;gap:7px}.card{padding:8px}.bar-row{grid-template-columns:28px 1fr 46px;gap:4px}.hero{left:5%}.enemy{right:5%}.sprite{font-size:76px}.portrait-sprite{width:92px;height:92px}.lower{padding:11px}.message{min-height:62px;font-size:14px}.commands{gap:8px}.cmd{min-height:54px;font-size:15px}}
     @media(max-height:720px){.battlefield{min-height:300px}.character{bottom:68px}.sprite{font-size:70px}.portrait-sprite{width:78px;height:78px}.message{min-height:54px}.cmd{min-height:49px}}
@@ -50,6 +55,8 @@
       <div class="moon"></div><div class="ground"></div>
       <div class="status-grid">
         <div class="card"><div class="card-title"><span>勇者</span><span id="heroLevel">Lv.1</span></div>
+          <div class="hero-rank" id="heroRankText">見習い勇者</div>
+          <div class="stat-line" id="heroStatText">ATK 10 / DEF 2 / MAG 8 / 会心 15%</div>
           <div class="bar-row"><span>HP</span><div class="bar"><div class="fill hp" id="heroHpBar"></div></div><span class="number" id="heroHpText">100/100</span></div>
           <div class="bar-row"><span>MP</span><div class="bar"><div class="fill mp" id="heroMpBar"></div></div><span class="number" id="heroMpText">30/30</span></div>
           <div class="bar-row"><span>EXP</span><div class="bar"><div class="fill exp" id="heroExpBar"></div></div><span class="number" id="heroExpText">0/40</span></div>
@@ -63,11 +70,48 @@
     </section>
     <section class="lower">
       <div class="message" id="message">歌い手があらわれた！ コマンドを選んでください。</div>
+      <div class="map-panel" id="mapPanel">
+        <div class="map-head"><span>🗺️ 冒険MAP</span><span id="mapPosText">X1 Y7</span></div>
+        <div class="map-help" id="mapInfoText">十字キーで主人公を操作。森では敵、宝箱ではG、キャンプでは回復。</div>
+        <div class="map-grid" id="mapGrid" aria-label="冒険マップ"></div>
+        <div class="map-controls">
+          <div class="move-spacer"></div><button class="move-btn" data-move="0,-1" aria-label="上へ移動">▲</button><div class="move-spacer"></div>
+          <button class="move-btn" data-move="-1,0" aria-label="左へ移動">◀</button><button class="move-btn" data-move="0,1" aria-label="下へ移動">▼</button><button class="move-btn" data-move="1,0" aria-label="右へ移動">▶</button>
+        </div>
+      </div>
       <div class="commands">
         <button class="cmd attack" id="attackBtn">⚔️ 攻撃<small>安定した物理攻撃</small></button>
         <button class="cmd skill" id="skillBtn">🔥 火炎斬り<small>MP 8／大ダメージ</small></button>
         <button class="cmd heal" id="healBtn">🧪 回復薬<small id="potionText">残り3個</small></button>
         <button class="cmd guard" id="guardBtn">🛡️ 防御<small>次の被ダメージ半減</small></button>
+        <button class="cmd map" id="mapBtn">🗺️ MAP<small id="mapText">冒険に出る</small></button>
+        <button class="cmd magic" id="magicBtn">✨ 魔法<small id="magicText">ファイア MP 6</small></button>
+        <div class="magic-panel" id="magicPanel">
+          <button class="cmd spell" data-spell="fire">🔥 ファイア<small>Lv1 / MP6</small></button>
+          <button class="cmd spell" data-spell="heal">💚 ヒール<small>Lv2 / MP8</small></button>
+          <button class="cmd spell" data-spell="thunder">⚡ サンダー<small>Lv4 / MP12</small></button>
+          <button class="cmd spell" data-spell="meteor">☄️ メテオ<small>Lv6 / MP18</small></button>
+        </div>
+        <button class="cmd job" id="jobBtn">🔁 転職<small id="jobText">勇者：バランス型</small></button>
+        <div class="job-panel" id="jobPanel">
+          <button class="cmd job-choice" data-job="hero">🗡️ 勇者<small>Lv1 / バランス型</small></button>
+          <button class="cmd job-choice" data-job="warrior">⚔️ 戦士<small>Lv2 / 攻撃特化</small></button>
+          <button class="cmd job-choice" data-job="mage">🧙 魔法使い<small>Lv3 / 魔法特化</small></button>
+          <button class="cmd job-choice" data-job="guardian">🛡️ 守り人<small>Lv4 / 防御特化</small></button>
+          <button class="cmd job-choice" data-job="thief">🗡️ 盗賊<small>Lv5 / 会心・所持金</small></button>
+          <button class="cmd job-choice" data-job="manimani">👑 まにまに勇者<small>Lv7 / 上級万能職</small></button>
+        </div>
+        <button class="cmd shop" id="shopBtn">🛒 装備屋<small id="shopText">武器・防具を買う</small></button>
+        <div class="shop-panel" id="shopPanel">
+          <button class="cmd shop-choice" data-shop="weapon:iron_sword">⚔️ 鉄の剣<small>80G / Lv2 / ATK+6</small></button>
+          <button class="cmd shop-choice" data-shop="armor:traveler">🧥 旅人の服<small>70G / Lv2 / DEF+4</small></button>
+          <button class="cmd shop-choice" data-shop="weapon:magic_staff">🔮 魔法の杖<small>120G / Lv3 / MAG+8</small></button>
+          <button class="cmd shop-choice" data-shop="armor:iron_armor">🛡️ 鉄の鎧<small>140G / Lv3 / DEF+9</small></button>
+          <button class="cmd shop-choice" data-shop="armor:magic_robe">🧙 魔法のローブ<small>180G / Lv4 / MAG+6</small></button>
+          <button class="cmd shop-choice" data-shop="weapon:manimani_sword">✨ まにまにソード<small>220G / Lv5 / ATK+14</small></button>
+          <button class="cmd shop-choice" data-shop="armor:manimani_armor">👑 まにまにアーマー<small>320G / Lv6 / DEF+16</small></button>
+          <button class="cmd shop-choice" data-shop="weapon:legend_blade">🌈 伝説まにまにブレード<small>420G / Lv8 / ATK+26</small></button>
+        </div>
       </div>
       <div class="footer-row"><span id="goldText">所持金：0 G</span><button class="restart" id="restartBtn">最初から</button></div>
     </section>
@@ -85,61 +129,253 @@
   const heroEl=$('hero'),enemyEl=$('enemy'),battlefield=$('battlefield'),messageEl=$('message');
   const heroHpBar=$('heroHpBar'),heroMpBar=$('heroMpBar'),heroExpBar=$('heroExpBar'),enemyHpBar=$('enemyHpBar');
   const heroHpText=$('heroHpText'),heroMpText=$('heroMpText'),heroExpText=$('heroExpText'),enemyHpText=$('enemyHpText');
-  const heroLevel=$('heroLevel'),enemyLevel=$('enemyLevel'),enemyName=$('enemyName'),enemyPlate=$('enemyPlate');
+  const heroLevel=$('heroLevel'),heroRankText=$('heroRankText'),heroStatText=$('heroStatText'),enemyLevel=$('enemyLevel'),enemyName=$('enemyName'),enemyPlate=$('enemyPlate');
   const enemyFaces=[...document.querySelectorAll('.enemy-face')];
   function showEnemyPortrait(index){const shown=Math.min(index,enemyFaces.length-1);enemyFaces.forEach((img,i)=>img.classList.toggle('active',i===shown));}
   const stageLabel=$('stageLabel'),potionText=$('potionText'),goldText=$('goldText');
-  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),restartBtn=$('restartBtn');
-  let hero,enemy,stage,locked,gameOver;
+  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),restartBtn=$('restartBtn');
+  const spellBtns=[...document.querySelectorAll('[data-spell]')];
+  const jobBtns=[...document.querySelectorAll('[data-job]')];
+  const shopBtns=[...document.querySelectorAll('[data-shop]')];
+  const moveBtns=[...document.querySelectorAll('[data-move]')];
+  let hero,enemy,stage,locked,gameOver,mapMode,mapState;
   const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
   const rand=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const jobs={
+    hero:{name:'勇者',icon:'🗡️',level:1,caption:'バランス型',atk:1,def:1,mag:1,crit:0,gold:1,mpCost:0,guard:.5},
+    warrior:{name:'戦士',icon:'⚔️',level:2,caption:'攻撃特化',atk:1.28,def:1.08,mag:.82,crit:.03,gold:1,mpCost:0,guard:.5},
+    mage:{name:'魔法使い',icon:'🧙',level:3,caption:'魔法特化・MP節約',atk:.82,def:.82,mag:1.35,crit:0,gold:1,mpCost:-2,guard:.5},
+    guardian:{name:'守り人',icon:'🛡️',level:4,caption:'防御特化・防御強化',atk:.92,def:1.45,mag:.95,crit:0,gold:1,mpCost:0,guard:.35},
+    thief:{name:'盗賊',icon:'🗡️',level:5,caption:'会心と所持金アップ',atk:1.08,def:.95,mag:.95,crit:.10,gold:1.25,mpCost:0,guard:.5},
+    manimani:{name:'まにまに勇者',icon:'👑',level:7,caption:'上級万能職',atk:1.18,def:1.18,mag:1.18,crit:.06,gold:1.1,mpCost:-1,guard:.45}
+  };
+  const equipment={
+    weapons:{
+      wood_sword:{type:'weapon',name:'木の剣',icon:'🗡️',level:1,price:0,atk:0,def:0,mag:0,crit:0,caption:'最初の武器'},
+      iron_sword:{type:'weapon',name:'鉄の剣',icon:'⚔️',level:2,price:80,atk:6,def:0,mag:0,crit:.01,caption:'攻撃力アップ'},
+      magic_staff:{type:'weapon',name:'魔法の杖',icon:'🔮',level:3,price:120,atk:2,def:0,mag:8,crit:0,caption:'魔法特化'},
+      manimani_sword:{type:'weapon',name:'まにまにソード',icon:'✨',level:5,price:220,atk:14,def:0,mag:4,crit:.03,caption:'攻撃と魔法を強化'},
+      legend_blade:{type:'weapon',name:'伝説まにまにブレード',icon:'🌈',level:8,price:420,atk:26,def:0,mag:8,crit:.08,caption:'最強級の武器'}
+    },
+    armors:{
+      cloth:{type:'armor',name:'布の服',icon:'👕',level:1,price:0,atk:0,def:0,mag:0,crit:0,caption:'最初の防具'},
+      traveler:{type:'armor',name:'旅人の服',icon:'🧥',level:2,price:70,atk:0,def:4,mag:0,crit:0,caption:'軽い防具'},
+      iron_armor:{type:'armor',name:'鉄の鎧',icon:'🛡️',level:3,price:140,atk:0,def:9,mag:-1,crit:0,caption:'防御重視'},
+      magic_robe:{type:'armor',name:'魔法のローブ',icon:'🧙',level:4,price:180,atk:0,def:5,mag:6,crit:0,caption:'魔法使い向け'},
+      manimani_armor:{type:'armor',name:'まにまにアーマー',icon:'👑',level:6,price:320,atk:0,def:16,mag:5,crit:.02,caption:'万能防具'}
+    }
+  };
+  function currentJob(){return jobs[hero?.job||'hero']||jobs.hero}
+  function currentWeapon(){return equipment.weapons[hero?.weapon]||equipment.weapons.wood_sword}
+  function currentArmor(){return equipment.armors[hero?.armor]||equipment.armors.cloth}
+  function hasJob(id){return hero&&jobs[id]&&hero.level>=jobs[id].level}
+  function ownsEquipment(type,id){return type==='weapon'?(hero.ownedWeapons||[]).includes(id):(hero.ownedArmors||[]).includes(id)}
+  function equipmentItem(type,id){return type==='weapon'?equipment.weapons[id]:equipment.armors[id]}
+  function equipmentUnlocked(item){return hero&&item&&hero.level>=item.level}
+  function effectiveAttack(){return Math.max(1,Math.round(hero.attack*currentJob().atk)+currentWeapon().atk+currentArmor().atk)}
+  function effectiveDefense(){return Math.max(0,Math.round(hero.defense*currentJob().def)+currentWeapon().def+currentArmor().def)}
+  function effectiveMagic(){return Math.max(1,Math.round(hero.magic*currentJob().mag)+currentWeapon().mag+currentArmor().mag)}
+  function spellCost(id){const sp=spells[id];return Math.max(1,(sp?.cost||0)+currentJob().mpCost)}
+  function critRate(){return Math.min(.58,.12+hero.level*.012+effectiveAttack()*.002+currentJob().crit+currentWeapon().crit+currentArmor().crit)}
+  function skillCritRate(){return Math.min(.55,critRate()+.08)}
+  function magicCritRate(){return Math.min(.42,.08+hero.level*.01+effectiveMagic()*.0015+currentJob().crit*.35)}
+  function critMultiplier(){return hero.level>=10?2.5:hero.level>=6?2.25:2}
+  function criticalLabel(rate){return `${Math.round(rate*100)}%`}
 
-  function resetGame(){
-    hero={level:1,maxHp:100,hp:100,maxMp:30,mp:30,exp:0,expNext:40,potions:3,gold:0,guarding:false};
-    stage=0;locked=false;gameOver=false;heroEl.classList.remove('defeated');nextEnemy(true);
+  const spells={
+    fire:{name:'ファイア',icon:'🔥',level:1,cost:6,caption:'魔力で小〜中ダメージ'},
+    heal:{name:'ヒール',icon:'💚',level:2,cost:8,caption:'HPを魔法回復'},
+    thunder:{name:'サンダー',icon:'⚡',level:4,cost:12,caption:'雷撃＋確率で足止め'},
+    meteor:{name:'メテオ',icon:'☄️',level:6,cost:18,caption:'超高火力の大魔法'}
+  };
+  function hasSpell(id){return hero&&hero.level>=spells[id].level}
+  function canUseSpell(id){return hero&&spells[id]&&hasSpell(id)&&hero.mp>=spellCost(id)&&!locked&&!gameOver}
+  function learnedSpellIds(){return Object.keys(spells).filter(id=>hasSpell(id))}
+  function bestSpell(){const ids=learnedSpellIds();return ids[ids.length-1]||'fire'}
+  function magicButtonCaption(){if(!hero)return 'ファイア MP 6';const id=bestSpell(),sp=spells[id];return `${sp.name}まで習得 / MP${spellCost(id)}`}
+  function jobButtonCaption(){if(!hero)return '勇者：バランス型';const j=currentJob();return `${j.icon} ${j.name}：${j.caption}`}
+  function shopButtonCaption(){if(!hero)return '武器・防具を買う';return `${currentWeapon().icon}${currentWeapon().name} / ${currentArmor().icon}${currentArmor().name}`}
+  function toggleMagicPanel(){if(locked||gameOver)return;jobPanel.classList.remove('open');shopPanel.classList.remove('open');magicPanel.classList.toggle('open');setMessage(magicPanel.classList.contains('open')?'使う魔法を選んでください。Lvが上がると新しい魔法を覚えます。':'あなたの番です。コマンドを選んでください。');render()}
+  function toggleJobPanel(){if(locked||gameOver)return;magicPanel.classList.remove('open');shopPanel.classList.remove('open');jobPanel.classList.toggle('open');setMessage(jobPanel.classList.contains('open')?'転職先を選んでください。職業によって攻撃・防御・魔法・会心率が変わります。':'あなたの番です。コマンドを選んでください。');render()}
+  function toggleShopPanel(){if(locked||gameOver)return;magicPanel.classList.remove('open');jobPanel.classList.remove('open');shopPanel.classList.toggle('open');setMessage(shopPanel.classList.contains('open')?'装備屋です。Gで武器・防具を購入できます。購入済みの装備は無料で付け替えできます。':'あなたの番です。コマンドを選んでください。');render()}
+  function closePanels(){magicPanel.classList.remove('open');jobPanel.classList.remove('open');shopPanel.classList.remove('open')}
+  function switchJob(id){if(locked||gameOver||!hasJob(id))return;hero.job=id;closePanels();const j=currentJob();animateClass(heroEl,'cast',500);floatEffect(heroEl,`${j.icon} 転職!`,'#facc15');setMessage(`<strong>${j.icon} ${j.name}</strong>に転職した！<br>${j.caption}。ステータス補正が反映されます。`);render()}
+  function buyOrEquipEquipment(type,id){
+    if(locked||gameOver)return;const item=equipmentItem(type,id);if(!item)return;
+    if(!equipmentUnlocked(item)){setMessage(`${item.icon} <strong>${item.name}</strong>はLv.${item.level}で解放されます。`);render();return}
+    const owned=ownsEquipment(type,id);if(!owned){if(hero.gold<item.price){setMessage(`${item.icon} <strong>${item.name}</strong>は${item.price}Gです。所持金が足りません。`);render();return}hero.gold-=item.price;(type==='weapon'?hero.ownedWeapons:hero.ownedArmors).push(id)}
+    if(type==='weapon')hero.weapon=id;else hero.armor=id;
+    animateClass(heroEl,'cast',480);floatEffect(heroEl,`${item.icon} 装備!`,'#fde68a');setMessage(`${owned?'装備を変更！':'購入して装備！'}<br>${item.icon} <strong>${item.name}</strong> を${type==='weapon'?'武器':'防具'}にした。<br>ATK+${item.atk} DEF+${item.def} MAG+${item.mag} 会心+${Math.round(item.crit*100)}%`);render();
+  }
+
+  
+  function heroRank(level){
+    if(level>=10)return '伝説のまにまに勇者';
+    if(level>=7)return '覚醒まにまに勇者';
+    if(level>=5)return 'まにまにブレイカー';
+    if(level>=3)return '旅立ちの勇者';
+    return '見習い勇者';
+  }
+  function skillName(){
+    if(hero&&hero.level>=5)return 'まにまにブレイク';
+    if(hero&&hero.level>=3)return '火炎連斬';
+    return '火炎斬り';
+  }
+  function skillCost(){return hero&&hero.level>=5?12:8}
+  function skillCaption(){return `MP ${skillCost()}／${hero&&hero.level>=5?'必殺攻撃':hero&&hero.level>=3?'連続大ダメージ':'大ダメージ'}`}
+  function applyLevelUp(){
+    const logs=[];
+    while(hero.exp>=hero.expNext){
+      hero.exp-=hero.expNext;
+      hero.level++;
+      const hpGain=14+hero.level*2,mpGain=4+Math.floor(hero.level/2),atkGain=3+Math.floor(hero.level/3),defGain=1+Math.floor(hero.level/4),magGain=2+Math.floor(hero.level/2);
+      hero.maxHp+=hpGain;hero.maxMp+=mpGain;hero.attack+=atkGain;hero.defense+=defGain;hero.magic+=magGain;
+      hero.expNext=Math.round(hero.expNext*1.35+10);
+      hero.hp=hero.maxHp;hero.mp=hero.maxMp;
+      const learned=hero.level===2?'／魔法「ヒール」習得！／職業「戦士」解放！':hero.level===3?'／新技「火炎連斬」習得！／職業「魔法使い」解放！':hero.level===4?'／魔法「サンダー」習得！／職業「守り人」解放！':hero.level===5?'／必殺「まにまにブレイク」習得！／職業「盗賊」解放！':hero.level===6?'／大魔法「メテオ」習得！':hero.level===7?'／上級職「まにまに勇者」解放！':'';
+      logs.push(`Lv.${hero.level} ${heroRank(hero.level)}<br>HP+${hpGain} MP+${mpGain} ATK+${atkGain} DEF+${defGain} MAG+${magGain}${learned}`);
+    }
+    return logs;
+  }
+  
+
+  const mapTileDefs={
+    '.':{icon:'🌿',name:'草原',cls:'plain'},
+    'F':{icon:'🌲',name:'森',cls:'forest'},
+    '~':{icon:'🌊',name:'水辺',cls:'water',block:true},
+    'T':{icon:'💰',name:'宝箱',cls:'treasure'},
+    'C':{icon:'⛺',name:'キャンプ',cls:'camp'},
+    'B':{icon:'🏰',name:'魔王城',cls:'boss'},
+    'S':{icon:'🏠',name:'出発地点',cls:'start'}
+  };
+  const baseMapRows=['..T..F.','.F...T.','...~...','.T..F..','..C....','F...T.B','S......'];
+  function initMap(){mapState={x:0,y:6,steps:0,encounterAfter:rand(4,7),tiles:baseMapRows.map(r=>r.split(''))};}
+  function tileAt(x=mapState.x,y=mapState.y){return mapState.tiles[y]?.[x]||'.'}
+  function setTile(x,y,v){if(mapState.tiles[y])mapState.tiles[y][x]=v}
+  function renderMap(){
+    if(!mapGrid||!mapState)return;
+    mapGrid.innerHTML='';
+    for(let y=0;y<mapState.tiles.length;y++){
+      for(let x=0;x<mapState.tiles[y].length;x++){
+        const ch=mapState.tiles[y][x],def=mapTileDefs[ch]||mapTileDefs['.'];
+        const cell=document.createElement('div');cell.className=`map-tile ${def.cls}`;cell.title=def.name;cell.textContent=def.icon;
+        if(x===mapState.x&&y===mapState.y){const pl=document.createElement('div');pl.className='map-player';pl.textContent=currentJob().icon||'🧍';cell.appendChild(pl)}
+        mapGrid.appendChild(cell);
+      }
+    }
+    mapPosText.textContent=`X${mapState.x+1} Y${mapState.y+1}`;
+    mapText.textContent=mapMode?'移動中':'冒険MAPを開く';
+  }
+  function mapMessage(text){if(mapInfoText)mapInfoText.innerHTML=text;setMessage(text)}
+  function enterMapMode(text='冒険MAPで主人公を操作してください。森や草原を歩くと敵と遭遇します。'){
+    if(!mapState)initMap();
+    mapMode=true;locked=false;closePanels();mapPanel.classList.add('open');enemyEl.classList.add('map-idle');
+    mapMessage(text);render();renderMap();
+  }
+  function startMapBattle(text='敵と遭遇した！'){
+    mapMode=false;mapPanel.classList.remove('open');enemyEl.classList.remove('map-idle');
+    nextEnemy(false);setMessage(`${text}<br>${enemy.name}があらわれた！`);locked=false;render();
+  }
+  function toggleMapPanel(){
+    if(gameOver)return;
+    mapPanel.classList.toggle('open');renderMap();
+    setMessage(mapPanel.classList.contains('open')?'MAPを表示しました。矢印ボタンかキーボードで移動できます。':'MAPを閉じました。');
+  }
+  function movePlayer(dx,dy){
+    if(gameOver)return;
+    if(!mapMode){enterMapMode('戦闘を離れてMAP探索に戻りました。');return}
+    const nx=mapState.x+dx,ny=mapState.y+dy;
+    if(ny<0||ny>=mapState.tiles.length||nx<0||nx>=mapState.tiles[0].length){mapMessage('これ以上は進めません。');renderMap();return}
+    const ch=tileAt(nx,ny),def=mapTileDefs[ch]||mapTileDefs['.'];
+    if(def.block){mapMessage('🌊 水辺があって進めません。別の道を探してください。');renderMap();return}
+    mapState.x=nx;mapState.y=ny;mapState.steps++;
+    renderMap();
+    if(ch==='T'){
+      const gold=rand(35,95)+hero.level*8;hero.gold+=gold;setTile(nx,ny,'.');
+      floatEffect(heroEl,`+${gold}G`,'#fde68a');mapMessage(`💰 宝箱を開けた！ <strong>${gold}G</strong> を獲得。`);mapState.encounterAfter=rand(4,7);render();renderMap();return;
+    }
+    if(ch==='C'){
+      hero.hp=hero.maxHp;hero.mp=hero.maxMp;hero.potions=Math.min(9,hero.potions+1);
+      floatEffect(heroEl,'全回復','#86efac');mapMessage('⛺ キャンプで休憩した。HPとMPが全回復し、回復薬が1個増えた。');render();return;
+    }
+    if(ch==='B'){
+      stage=Math.max(stage,enemies.length-1);startMapBattle('🏰 魔王城に踏み込んだ！');return;
+    }
+    const forestBonus=ch==='F'?0.18:0;
+    if(mapState.steps>=mapState.encounterAfter||Math.random()<forestBonus){
+      mapState.steps=0;mapState.encounterAfter=rand(4,8);startMapBattle(ch==='F'?'🌲 森の中から敵が飛び出した！':'⚔️ 敵と遭遇した！');return;
+    }
+    mapMessage(`${def.icon} ${def.name}を進んだ。あと少し歩くと敵に遭遇しそうです。`);
+    render();
+  }
+
+function resetGame(){
+    hero={level:1,maxHp:100,hp:100,maxMp:30,mp:30,attack:10,defense:2,magic:8,job:'hero',weapon:'wood_sword',armor:'cloth',ownedWeapons:['wood_sword'],ownedArmors:['cloth'],exp:0,totalExp:0,expNext:40,potions:3,gold:0,guarding:false};
+    stage=0;locked=false;gameOver=false;mapMode=false;heroEl.classList.remove('defeated');enemyEl.classList.remove('defeated');initMap();nextEnemy(true);enterMapMode('🏠 まにまにクエスト開始！MAPで主人公を操作して冒険へ出発してください。');
   }
   function nextEnemy(first=false){
     const base=enemies[Math.min(stage,enemies.length-1)];
     const scale=stage>=enemies.length?1+(stage-enemies.length+1)*.18:1;
-    enemy={...base,level:base.level+Math.max(0,stage-enemies.length+1),maxHp:Math.round(base.hp*scale),hp:Math.round(base.hp*scale),attack:[Math.round(base.attack[0]*scale),Math.round(base.attack[1]*scale)]};
+    enemy={...base,level:base.level+Math.max(0,stage-enemies.length+1),maxHp:Math.round(base.hp*scale),hp:Math.round(base.hp*scale),attack:[Math.round(base.attack[0]*scale),Math.round(base.attack[1]*scale)],stunned:false};
     enemyEl.classList.remove('defeated');showEnemyPortrait(stage);enemyName.textContent=enemy.name;enemyPlate.textContent=enemy.name;enemyLevel.textContent=`Lv.${enemy.level}`;stageLabel.textContent=`STAGE ${stage+1}`;
     hero.hp=Math.min(hero.maxHp,hero.hp+18);hero.mp=Math.min(hero.maxMp,hero.mp+6);render();setMessage(first?`${enemy.name}があらわれた！ コマンドを選んでください。`:`新たな敵、${enemy.name}があらわれた！`);
   }
   function render(){
     heroHpBar.style.width=`${clamp(hero.hp/hero.maxHp*100,0,100)}%`;heroMpBar.style.width=`${clamp(hero.mp/hero.maxMp*100,0,100)}%`;heroExpBar.style.width=`${clamp(hero.exp/hero.expNext*100,0,100)}%`;enemyHpBar.style.width=`${clamp(enemy.hp/enemy.maxHp*100,0,100)}%`;
     heroHpText.textContent=`${Math.max(0,hero.hp)}/${hero.maxHp}`;heroMpText.textContent=`${hero.mp}/${hero.maxMp}`;heroExpText.textContent=`${hero.exp}/${hero.expNext}`;enemyHpText.textContent=`${Math.max(0,enemy.hp)}/${enemy.maxHp}`;
-    heroLevel.textContent=`Lv.${hero.level}`;potionText.textContent=`残り${hero.potions}個`;goldText.textContent=`所持金：${hero.gold} G`;
-    skillBtn.disabled=locked||gameOver||hero.mp<8;healBtn.disabled=locked||gameOver||hero.potions<=0||hero.hp>=hero.maxHp;attackBtn.disabled=locked||gameOver;guardBtn.disabled=locked||gameOver;
+    heroLevel.textContent=`Lv.${hero.level}`;if(heroRankText)heroRankText.textContent=`${currentJob().icon} ${currentJob().name}／${heroRank(hero.level)}`;if(heroStatText)heroStatText.textContent=`ATK ${effectiveAttack()} / DEF ${effectiveDefense()} / MAG ${effectiveMagic()} / 会心 ${criticalLabel(critRate())}`;potionText.textContent=`残り${hero.potions}個`;goldText.textContent=`所持金：${hero.gold} G｜${currentWeapon().icon}${currentWeapon().name}｜${currentArmor().icon}${currentArmor().name}`;
+    if(skillBtn.firstChild)skillBtn.firstChild.nodeValue=`🔥 ${skillName()}`;const skillSmall=skillBtn.querySelector('small');if(skillSmall)skillSmall.textContent=skillCaption();
+    if(magicText)magicText.textContent=magicButtonCaption();if(jobText)jobText.textContent=jobButtonCaption();if(shopText)shopText.textContent=shopButtonCaption();
+    spellBtns.forEach(btn=>{const id=btn.dataset.spell,sp=spells[id],learned=hasSpell(id),cost=spellCost(id),affordable=hero.mp>=cost;btn.disabled=locked||gameOver||!learned||!affordable;btn.classList.toggle('spell-locked',!learned);btn.classList.toggle('spell-ready',learned&&affordable&&!locked&&!gameOver);const sm=btn.querySelector('small');if(sm)sm.textContent=learned?`MP ${cost}／${sp.caption}`:`Lv.${sp.level}で習得`;});
+    jobBtns.forEach(btn=>{const id=btn.dataset.job,j=jobs[id],learned=hasJob(id),current=hero.job===id;btn.disabled=locked||gameOver||!learned;btn.classList.toggle('job-locked',!learned);btn.classList.toggle('job-current',current);const sm=btn.querySelector('small');if(sm)sm.textContent=learned?`${current?'現在職／':''}${j.caption}`:`Lv.${j.level}で解放`;});
+    shopBtns.forEach(btn=>{const [type,id]=(btn.dataset.shop||'').split(':'),item=equipmentItem(type,id),owned=item&&ownsEquipment(type,id),current=item&&((type==='weapon'&&hero.weapon===id)||(type==='armor'&&hero.armor===id)),unlocked=item&&equipmentUnlocked(item),buyable=item&&unlocked&&hero.gold>=item.price;btn.disabled=locked||gameOver||!item||!unlocked||(!owned&&!buyable);btn.classList.toggle('shop-locked',!unlocked||(!owned&&!buyable));btn.classList.toggle('shop-buyable',!!(!owned&&buyable));btn.classList.toggle('equip-current',!!current);const sm=btn.querySelector('small');if(sm&&item)sm.textContent=current?'装備中':owned?'購入済み / 付け替え':unlocked?`${item.price}G / ${item.caption}`:`Lv.${item.level}で解放`;});
+    const battleLocked=locked||gameOver||mapMode;
+    skillBtn.disabled=battleLocked||hero.mp<skillCost();healBtn.disabled=battleLocked||hero.potions<=0||hero.hp>=hero.maxHp;attackBtn.disabled=battleLocked;guardBtn.disabled=battleLocked;magicBtn.disabled=battleLocked||!learnedSpellIds().some(id=>hero.mp>=spellCost(id));jobBtn.disabled=locked||gameOver;shopBtn.disabled=locked||gameOver;mapBtn.disabled=locked||gameOver;
+    if(mapText)mapText.textContent=mapMode?'操作中：矢印で移動':'MAPを開く';
+    renderMap();
   }
   function setMessage(text){messageEl.innerHTML=text}
   function animateClass(el,cls,d=350){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),d)}
-  function floatEffect(target,text,color='#fff'){
-    const rect=target.getBoundingClientRect(),area=battlefield.getBoundingClientRect(),e=document.createElement('div');e.className='effect';e.textContent=text;e.style.color=color;e.style.left=`${rect.left-area.left+rect.width/2-20}px`;e.style.top=`${rect.top-area.top+28}px`;battlefield.appendChild(e);setTimeout(()=>e.remove(),900);
+  function floatEffect(target,text,color='#fff',extraClass=''){
+    const rect=target.getBoundingClientRect(),area=battlefield.getBoundingClientRect(),e=document.createElement('div');e.className=`effect ${extraClass}`.trim();e.textContent=text;e.style.color=color;e.style.left=`${rect.left-area.left+rect.width/2-20}px`;e.style.top=`${rect.top-area.top+28}px`;battlefield.appendChild(e);setTimeout(()=>e.remove(),900);
   }
-  async function playerAction(type){
-    if(locked||gameOver)return;locked=true;render();
-    if(type==='attack'){animateClass(heroEl,'lunge');await sleep(210);const dmg=rand(13+hero.level*2,20+hero.level*3);enemy.hp-=dmg;animateClass(enemyEl,'shake');floatEffect(enemyEl,`-${dmg}`,'#fde68a');setMessage(`あなたの攻撃！ <strong>${dmg}ダメージ</strong>！`)}
-    if(type==='skill'){hero.mp-=8;animateClass(heroEl,'cast',500);await sleep(300);const critical=Math.random()<.18;const dmg=rand(24+hero.level*3,34+hero.level*5)*(critical?2:1);enemy.hp-=dmg;animateClass(enemyEl,'shake');floatEffect(enemyEl,`🔥 -${dmg}`,'#fb7185');setMessage(`火炎斬り！ <strong>${dmg}ダメージ</strong>${critical?'！ 会心の一撃！':'！'}`)}
+  async function playerAction(type,spellId=null){
+    if(locked||gameOver)return;if(type==='magic'&&!canUseSpell(spellId))return;locked=true;closePanels();render();
+    if(type==='attack'){animateClass(heroEl,'lunge');await sleep(210);const critical=Math.random()<critRate();const atk=effectiveAttack();const base=rand(atk+5,atk+13+hero.level);const dmg=Math.round(base*(critical?critMultiplier():1));enemy.hp-=dmg;animateClass(enemyEl,'shake');floatEffect(enemyEl,`${critical?'💥 会心 ':'-'}${dmg}`,'#fde68a',critical?'critical':'');setMessage(critical?`<strong>会心の一撃！</strong> あなたの攻撃が急所に入った！ <strong>${dmg}ダメージ</strong>！`:`あなたの攻撃！ <strong>${dmg}ダメージ</strong>！`)}
+    if(type==='skill'){const cost=skillCost();hero.mp-=cost;animateClass(heroEl,'cast',500);await sleep(300);const critical=Math.random()<skillCritRate();const mag=effectiveMagic();const base=hero.level>=5?rand(mag+38,mag+58+hero.level*3):hero.level>=3?rand(mag+28,mag+44+hero.level*2):rand(mag+18,mag+30+hero.level*2);const dmg=Math.round(base*(critical?critMultiplier():1));enemy.hp-=dmg;animateClass(enemyEl,'shake');floatEffect(enemyEl,`${critical?'💥🔥 ':'🔥 -'}${dmg}`,'#fb7185',critical?'critical':'');setMessage(`${skillName()}！ <strong>${dmg}ダメージ</strong>${critical?'！ <strong>会心の一撃！</strong>':'！'}`)}
     if(type==='heal'){hero.potions--;const amount=rand(28,42),healed=Math.min(amount,hero.maxHp-hero.hp);hero.hp+=healed;animateClass(heroEl,'cast',450);floatEffect(heroEl,`+${healed}`,'#86efac');setMessage(`回復薬を使った。HPが<strong>${healed}</strong>回復！`)}
-    if(type==='guard'){hero.guarding=true;animateClass(heroEl,'cast',400);setMessage(`あなたは盾を構えた。次のダメージを半減します。`)}
+    if(type==='guard'){hero.guarding=true;animateClass(heroEl,'cast',400);setMessage(currentJob().guard<.5?`守り人の構え！ 次のダメージを大きく軽減します。`:`あなたは盾を構えた。次のダメージを半減します。`)}
+    if(type==='magic'){
+      const sp=spells[spellId],cost=spellCost(spellId);hero.mp-=cost;animateClass(heroEl,'cast',560);await sleep(330);
+      if(spellId==='heal'){
+        const mag=effectiveMagic();const amount=rand(mag+28,mag+46+hero.level*3),healed=Math.min(amount,hero.maxHp-hero.hp);hero.hp+=healed;floatEffect(heroEl,`${sp.icon} +${healed}`,'#86efac');setMessage(`${sp.name}！ HPが<strong>${healed}</strong>回復した。`);
+      }else{
+        const critical=Math.random()<magicCritRate();
+        const mag=effectiveMagic();const base=spellId==='fire'?rand(mag+16,mag+30+hero.level*2):spellId==='thunder'?rand(mag+28,mag+48+hero.level*3):rand(mag+58,mag+88+hero.level*4);
+        const dmg=Math.round(base*(critical?critMultiplier():1));enemy.hp-=dmg;animateClass(enemyEl,'shake');floatEffect(enemyEl,`${critical?'💥':' '}${sp.icon} -${dmg}`,'#c4b5fd',critical?'critical':'');
+        if(spellId==='thunder'&&Math.random()<.38){enemy.stunned=true;setMessage(`${sp.name}！ <strong>${dmg}ダメージ</strong>${critical?'！ <strong>魔法会心！</strong>':''}！ ${enemy.name}はしびれている！`)}
+        else setMessage(`${sp.name}！ <strong>${dmg}ダメージ</strong>${critical?'！ <strong>魔法会心！</strong>':'！'}`);
+      }
+    }
     render();await sleep(700);if(enemy.hp<=0){await victory();return}await enemyTurn();
   }
   async function enemyTurn(){
+    if(enemy.stunned){enemy.stunned=false;animateClass(enemyEl,'shake');setMessage(`${enemy.name}はしびれて動けない！`);await sleep(750);locked=false;setMessage(`あなたの番です。コマンドを選んでください。`);render();return}
     const special=enemy.name==='魔王まにまに'&&Math.random()<.3;animateClass(enemyEl,special?'cast':'lunge',special?500:350);setMessage(special?`${enemy.name}は炎を吐いた！`:`${enemy.name}の攻撃！`);await sleep(special?450:260);
-    let dmg=special?rand(enemy.attack[1],enemy.attack[1]+10):rand(enemy.attack[0],enemy.attack[1]);if(hero.guarding){dmg=Math.ceil(dmg/2);hero.guarding=false}
+    let dmg=special?rand(enemy.attack[1],enemy.attack[1]+10):rand(enemy.attack[0],enemy.attack[1]);if(hero.guarding){dmg=Math.ceil(dmg*currentJob().guard);hero.guarding=false}dmg=Math.max(1,dmg-effectiveDefense());
     hero.hp-=dmg;animateClass(heroEl,'shake');floatEffect(heroEl,`-${dmg}`,'#fca5a5');setMessage(`${enemy.name}の攻撃！ あなたは<strong>${dmg}ダメージ</strong>受けた。`);render();await sleep(750);
     if(hero.hp<=0){defeat();return}locked=false;setMessage(`あなたの番です。コマンドを選んでください。`);render();
   }
   async function victory(){
-    enemy.hp=0;enemyEl.classList.add('defeated');const gainedExp=enemy.exp+Math.max(0,stage-enemies.length+1)*12,gainedGold=enemy.gold+Math.max(0,stage-enemies.length+1)*10;hero.exp+=gainedExp;hero.gold+=gainedGold;
+    enemy.hp=0;enemyEl.classList.add('defeated');const gainedExp=enemy.exp+Math.max(0,stage-enemies.length+1)*12,gainedGold=Math.round((enemy.gold+Math.max(0,stage-enemies.length+1)*10)*currentJob().gold);hero.exp+=gainedExp;hero.totalExp+=gainedExp;hero.gold+=gainedGold;
     setMessage(`${enemy.name}を倒した！ <strong>${gainedExp}EXP</strong> と <strong>${gainedGold}G</strong> を獲得！`);render();await sleep(1050);
-    let leveled=false;while(hero.exp>=hero.expNext){hero.exp-=hero.expNext;hero.level++;hero.expNext=Math.round(hero.expNext*1.35);hero.maxHp+=18;hero.maxMp+=5;hero.hp=hero.maxHp;hero.mp=hero.maxMp;leveled=true}
-    if(leveled){floatEffect(heroEl,'LEVEL UP!','#facc15');animateClass(heroEl,'cast',600);setMessage(`<strong>レベルアップ！ Lv.${hero.level}</strong><br>HPとMPが全回復した！`);render();await sleep(1200)}
-    stage++;nextEnemy();locked=false;render();
+    const levelLogs=applyLevelUp();
+    if(levelLogs.length){floatEffect(heroEl,'LEVEL UP!','#facc15');animateClass(heroEl,'cast',600);setMessage(`<strong>レベルアップ！</strong><br>${levelLogs.join('<br>')}<br>HPとMPが全回復した！`);render();await sleep(1700)}
+    stage++;enterMapMode('勝利！MAP探索に戻りました。歩いて次の敵を探しましょう。');locked=false;render();
   }
-  function defeat(){hero.hp=0;heroEl.classList.add('defeated');gameOver=true;locked=true;setMessage(`<strong>あなたは倒れてしまった……</strong><br>「最初から」で再挑戦できます。`);render()}
-  attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};resetGame();
+  function defeat(){hero.hp=0;heroEl.classList.add('defeated');gameOver=true;locked=true;mapMode=false;setMessage(`<strong>あなたは倒れてしまった……</strong><br>「最初から」で再挑戦できます。`);render()}
+  mapBtn.addEventListener('click',toggleMapPanel);moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));window.addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};const k=keys[e.key];if(k&&mapMode){e.preventDefault();movePlayer(k[0],k[1])}});attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();resetGame();
 })();
 </script>
-</body></html> 
+</body></html>
