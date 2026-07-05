@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
   <meta name="theme-color" content="#111827" />
-  <title>まにまにクエスト - 統括ストーリー版</title>
+  <title>まにまにクエスト - BGM統合版</title>
   <style>
     :root{--bg1:#0f172a;--bg2:#1e293b;--panel:rgba(15,23,42,.86);--line:rgba(255,255,255,.12);--text:#f8fafc;--muted:#cbd5e1}
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -41,7 +41,7 @@
     .commands{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
     .cmd{min-height:58px;border:1px solid rgba(255,255,255,.14);border-radius:16px;color:white;background:rgba(255,255,255,.08);font-size:16px;font-weight:900;cursor:pointer;touch-action:manipulation;transition:transform .08s ease,filter .15s ease,opacity .2s ease}
     .cmd small{display:block;font-size:11px;font-weight:600;margin-top:3px;color:rgba(255,255,255,.75)}.cmd:active{transform:scale(.97)}.cmd:disabled{opacity:.38;cursor:default}
-    .attack{background:linear-gradient(135deg,#b45309,#f59e0b)}.skill{background:linear-gradient(135deg,#6d28d9,#a78bfa)}.heal{background:linear-gradient(135deg,#047857,#10b981)}.guard{background:linear-gradient(135deg,#334155,#64748b)}.map,.magic,.job,.shop{grid-column:1/-1}.magic{background:linear-gradient(135deg,#7c3aed,#06b6d4)}.job{background:linear-gradient(135deg,#92400e,#ef4444)}.shop{background:linear-gradient(135deg,#0f766e,#ca8a04)}.spell{background:linear-gradient(135deg,#312e81,#0f766e)}.job-choice{background:linear-gradient(135deg,#422006,#7f1d1d)}.shop-choice{background:linear-gradient(135deg,#164e63,#854d0e)}.magic-panel,.job-panel,.shop-panel{grid-column:1/-1;display:none;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.magic-panel.open,.job-panel.open,.shop-panel.open{display:grid}.magic-panel .cmd,.job-panel .cmd,.shop-panel .cmd{min-height:50px;font-size:14px}.spell-locked,.job-locked,.shop-locked{opacity:.34}.spell-ready,.job-current,.equip-current{box-shadow:0 0 0 2px rgba(250,204,21,.24)}.shop-buyable{box-shadow:0 0 0 2px rgba(52,211,153,.22)}
+    .attack{background:linear-gradient(135deg,#b45309,#f59e0b)}.skill{background:linear-gradient(135deg,#6d28d9,#a78bfa)}.heal{background:linear-gradient(135deg,#047857,#10b981)}.guard{background:linear-gradient(135deg,#334155,#64748b)}.map,.magic,.job,.shop,.audio{grid-column:1/-1}.audio{background:linear-gradient(135deg,#be185d,#f59e0b)}.audio.audio-on{box-shadow:0 0 0 2px rgba(250,204,21,.28),0 0 18px rgba(245,158,11,.24)}.magic{background:linear-gradient(135deg,#7c3aed,#06b6d4)}.job{background:linear-gradient(135deg,#92400e,#ef4444)}.shop{background:linear-gradient(135deg,#0f766e,#ca8a04)}.spell{background:linear-gradient(135deg,#312e81,#0f766e)}.job-choice{background:linear-gradient(135deg,#422006,#7f1d1d)}.shop-choice{background:linear-gradient(135deg,#164e63,#854d0e)}.magic-panel,.job-panel,.shop-panel{grid-column:1/-1;display:none;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.magic-panel.open,.job-panel.open,.shop-panel.open{display:grid}.magic-panel .cmd,.job-panel .cmd,.shop-panel .cmd{min-height:50px;font-size:14px}.spell-locked,.job-locked,.shop-locked{opacity:.34}.spell-ready,.job-current,.equip-current{box-shadow:0 0 0 2px rgba(250,204,21,.24)}.shop-buyable{box-shadow:0 0 0 2px rgba(52,211,153,.22)}
     .map{background:linear-gradient(135deg,#1d4ed8,#16a34a)}.map-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.map-panel.open{display:block}.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:#e2e8f0;font-weight:900}.map-help{color:var(--muted);font-size:11px;line-height:1.35}.map-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:8px 0}.map-tile{aspect-ratio:1/1;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(15,23,42,.7);display:grid;place-items:center;font-size:clamp(18px,6vw,30px);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.map-tile.forest{background:rgba(22,101,52,.55)}.map-tile.water{background:rgba(14,116,144,.5)}.map-tile.treasure{background:rgba(146,64,14,.58)}.map-tile.camp{background:rgba(6,95,70,.58)}.map-tile.boss{background:rgba(127,29,29,.66)}.map-tile.start{background:rgba(59,130,246,.38)}.map-player{position:absolute;inset:6%;display:grid;place-items:center;border-radius:50%;background:rgba(250,204,21,.92);box-shadow:0 0 18px rgba(250,204,21,.55);font-size:clamp(17px,5.4vw,28px);animation:playerPulse 1.2s ease-in-out infinite}@keyframes playerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}.map-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:280px;margin:10px auto 0}.move-btn{min-height:44px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:linear-gradient(135deg,#334155,#0f766e);color:#fff;font-size:20px;font-weight:900}.move-btn:active{transform:scale(.97)}.move-spacer{min-height:44px}.map-idle{opacity:.32;filter:grayscale(.4)}
         .story{grid-column:1/-1;background:linear-gradient(135deg,#4338ca,#be123c)}.story-panel{display:none;margin-top:12px;padding:12px;border-radius:18px;background:linear-gradient(160deg,rgba(49,46,129,.28),rgba(88,28,135,.18));border:1px solid rgba(216,180,254,.28)}.story-panel.open{display:block}.story-head,.map-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:900;color:#fde68a;margin-bottom:8px}.story-box,.quest-box{border:1px solid rgba(255,255,255,.12);background:rgba(15,23,42,.55);border-radius:14px;padding:10px;margin-top:8px;line-height:1.55;font-size:13px}.chapter-title{font-size:15px;font-weight:900;color:#fff;margin-bottom:4px}.quest-line{color:#bfdbfe;font-weight:800}.story-note{color:#d8b4fe}.system-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.system-tags span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 8px;background:rgba(255,255,255,.08);font-size:11px;font-weight:800}.ending-glow{animation:endingGlow 1.2s ease infinite alternate}@keyframes endingGlow{from{filter:drop-shadow(0 0 6px rgba(250,204,21,.35))}to{filter:drop-shadow(0 0 20px rgba(250,204,21,.95))}}
 .footer-row{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:12px}.restart{border:1px solid var(--line);border-radius:12px;padding:9px 12px;color:white;background:rgba(255,255,255,.08);font-weight:800}
@@ -92,6 +92,7 @@
         <button class="cmd guard" id="guardBtn">🛡️ 防御<small>次の被ダメージ半減</small></button>
         <button class="cmd map" id="mapBtn">🗺️ MAP<small id="mapText">冒険に出る</small></button>
         <button class="cmd story" id="storyBtn">📜 物語<small id="storyBtnText">現在の目的</small></button>
+        <button class="cmd audio" id="bgmBtn">🎵 BGM<small id="bgmText">OFF / タップで再生</small></button>
         <button class="cmd magic" id="magicBtn">✨ 魔法<small id="magicText">ファイア MP 6</small></button>
         <div class="magic-panel" id="magicPanel">
           <button class="cmd spell" data-spell="fire">🔥 ファイア<small>Lv1 / MP6</small></button>
@@ -120,7 +121,7 @@
           <button class="cmd shop-choice" data-shop="weapon:legend_blade">🌈 伝説まにまにブレード<small>420G / Lv8 / ATK+26</small></button>
         </div>
       </div>
-      <div class="footer-row"><span id="goldText">所持金：0 G</span><button class="restart" id="restartBtn">最初から</button></div>
+      <div class="footer-row"><span id="goldText">所持金：0 G</span><span>BGM：自由利用可オリジナル生成音源</span><button class="restart" id="restartBtn">最初から</button></div>
     </section>
   </main>
 <script>
@@ -140,7 +141,7 @@
   const enemyFaces=[...document.querySelectorAll('.enemy-face')];
   function showEnemyPortrait(index){const shown=Math.min(index,enemyFaces.length-1);enemyFaces.forEach((img,i)=>img.classList.toggle('active',i===shown));}
   const stageLabel=$('stageLabel'),potionText=$('potionText'),goldText=$('goldText');
-  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),storyBtn=$('storyBtn'),storyBtnText=$('storyBtnText'),storyPanel=$('storyPanel'),storyText=$('storyText'),questText=$('questText'),chapterText=$('chapterText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),restartBtn=$('restartBtn');
+  const attackBtn=$('attackBtn'),skillBtn=$('skillBtn'),healBtn=$('healBtn'),guardBtn=$('guardBtn'),mapBtn=$('mapBtn'),mapText=$('mapText'),mapPanel=$('mapPanel'),mapGrid=$('mapGrid'),mapPosText=$('mapPosText'),mapInfoText=$('mapInfoText'),storyBtn=$('storyBtn'),storyBtnText=$('storyBtnText'),storyPanel=$('storyPanel'),storyText=$('storyText'),questText=$('questText'),chapterText=$('chapterText'),magicBtn=$('magicBtn'),magicPanel=$('magicPanel'),magicText=$('magicText'),jobBtn=$('jobBtn'),jobPanel=$('jobPanel'),jobText=$('jobText'),shopBtn=$('shopBtn'),shopPanel=$('shopPanel'),shopText=$('shopText'),bgmBtn=$('bgmBtn'),bgmText=$('bgmText'),restartBtn=$('restartBtn');
   const spellBtns=[...document.querySelectorAll('[data-spell]')];
   const jobBtns=[...document.querySelectorAll('[data-job]')];
   const shopBtns=[...document.querySelectorAll('[data-shop]')];
@@ -149,6 +150,52 @@
   const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
   const rand=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  let bgmEnabled=false,bgmMode='field',audioCtx=null,masterGain=null,bgmTimer=null,bgmStep=0;
+  const bgmPatterns={
+    field:{name:'フィールド',tempo:138,vol:.045,bass:[130.81,130.81,146.83,146.83,164.81,164.81,146.83,146.83],lead:[523.25,659.25,783.99,659.25,587.33,523.25,493.88,587.33,659.25,783.99,880,783.99,659.25,587.33,523.25,392]},
+    battle:{name:'バトル',tempo:176,vol:.058,bass:[110,110,116.54,130.81,146.83,130.81,116.54,110],lead:[440,523.25,587.33,659.25,698.46,659.25,587.33,523.25,493.88,587.33,659.25,783.99,880,783.99,659.25,587.33]}
+  };
+  function ensureAudio(){
+    const AudioClass=window.AudioContext||window.webkitAudioContext;
+    if(!AudioClass){setMessage('この端末ではBGM再生に対応していません。');return false}
+    if(!audioCtx){audioCtx=new AudioClass();masterGain=audioCtx.createGain();masterGain.gain.value=.42;masterGain.connect(audioCtx.destination)}
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    return true;
+  }
+  function playTone(freq,dur,type,gain,delay=0){
+    if(!audioCtx||!masterGain||!freq)return;
+    const t=audioCtx.currentTime+delay,o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.type=type;o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(gain,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g);g.connect(masterGain);o.start(t);o.stop(t+dur+.05);
+  }
+  function playBgmStep(){
+    if(!bgmEnabled||!audioCtx)return;
+    const cfg=bgmPatterns[bgmMode]||bgmPatterns.field,beat=60/cfg.tempo,step=bgmStep++;
+    const lead=cfg.lead[step%cfg.lead.length],bass=cfg.bass[step%cfg.bass.length];
+    playTone(bass,beat*.9,'triangle',cfg.vol*.7,0);
+    playTone(lead,beat*.56,bgmMode==='battle'?'square':'sine',cfg.vol,beat*.05);
+    if(step%4===0){playTone(lead/2,beat*1.7,'sine',cfg.vol*.34,0);playTone(lead*1.25,beat*.8,'sine',cfg.vol*.18,beat*.04)}
+    if(bgmMode==='battle'&&step%2===0)playTone(82.41,beat*.18,'sawtooth',cfg.vol*.5,beat*.02);
+  }
+  function stopBgm(){if(bgmTimer){clearInterval(bgmTimer);bgmTimer=null}}
+  function updateBgmText(){if(!bgmText)return;bgmText.textContent=bgmEnabled?`${bgmPatterns[bgmMode].name}再生中`:'OFF / タップで再生';if(bgmBtn)bgmBtn.classList.toggle('audio-on',bgmEnabled)}
+  function startBgm(){
+    stopBgm();
+    if(!bgmEnabled||!ensureAudio()){updateBgmText();return}
+    bgmStep=0;playBgmStep();
+    const cfg=bgmPatterns[bgmMode]||bgmPatterns.field;
+    bgmTimer=setInterval(playBgmStep,Math.round(60000/cfg.tempo));
+    updateBgmText();
+  }
+  function updateBgmMode(){
+    const desired=(!gameOver&&mapMode)?'field':'battle';
+    if(desired!==bgmMode){bgmMode=desired;if(bgmEnabled)startBgm()}else updateBgmText();
+  }
+  function toggleBgm(){
+    bgmEnabled=!bgmEnabled;bgmMode=(!gameOver&&mapMode)?'field':'battle';
+    if(bgmEnabled){startBgm();setMessage(`🎵 ${bgmPatterns[bgmMode].name}BGMを再生します。フィールドとバトルで自動切替します。`)}
+    else{stopBgm();updateBgmText();setMessage('🎵 BGMをOFFにしました。')}
+  }
   const jobs={
     hero:{name:'勇者',icon:'🗡️',level:1,caption:'バランス型',atk:1,def:1,mag:1,crit:0,gold:1,mpCost:0,guard:.5},
     warrior:{name:'戦士',icon:'⚔️',level:2,caption:'攻撃特化',atk:1.28,def:1.08,mag:.82,crit:.03,gold:1,mpCost:0,guard:.5},
@@ -361,11 +408,11 @@
   function enterMapMode(text='冒険MAPで主人公を操作してください。森や草原を歩くと敵と遭遇します。'){
     if(!mapState)initMap();
     mapMode=true;locked=false;closePanels();mapPanel.classList.add('open');enemyEl.classList.add('map-idle');
-    mapMessage(text);render();renderMap();
+    updateBgmMode();mapMessage(text);render();renderMap();
   }
   function startMapBattle(text='敵と遭遇した！'){
     mapMode=false;mapPanel.classList.remove('open');enemyEl.classList.remove('map-idle');
-    nextEnemy(false);setMessage(`${text}<br>${storyBattleIntro()}<br>${enemy.name}があらわれた！`);locked=false;render();
+    updateBgmMode();nextEnemy(false);setMessage(`${text}<br>${storyBattleIntro()}<br>${enemy.name}があらわれた！`);locked=false;render();
   }
   function toggleMapPanel(){
     if(gameOver)return;
@@ -482,8 +529,8 @@ function resetGame(){
     if(defeatedName==='魔王まにまに'){endingSequence();locked=false;render();return}
     enterMapMode('勝利！MAP探索に戻りました。物語統括で次の目的を確認しましょう。');locked=false;render();
   }
-  function defeat(){hero.hp=0;heroEl.classList.add('defeated');gameOver=true;locked=true;mapMode=false;setMessage(`<strong>あなたは倒れてしまった……</strong><br>「最初から」で再挑戦できます。`);render()}
-  mapBtn.addEventListener('click',toggleMapPanel);storyBtn.addEventListener('click',toggleStoryPanel);moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));window.addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};const k=keys[e.key];if(k&&mapMode){e.preventDefault();movePlayer(k[0],k[1])}});attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();window.__storyForCheck=()=>{storyPanel.classList.add('open');renderStoryPanel();return hero.story};resetGame();
+  function defeat(){hero.hp=0;heroEl.classList.add('defeated');gameOver=true;locked=true;mapMode=false;stopBgm();updateBgmText();setMessage(`<strong>あなたは倒れてしまった……</strong><br>「最初から」で再挑戦できます。`);render()}
+  mapBtn.addEventListener('click',toggleMapPanel);storyBtn.addEventListener('click',toggleStoryPanel);moveBtns.forEach(btn=>btn.addEventListener('click',()=>{const [dx,dy]=btn.dataset.move.split(',').map(Number);movePlayer(dx,dy)}));window.addEventListener('keydown',e=>{const keys={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};const k=keys[e.key];if(k&&mapMode){e.preventDefault();movePlayer(k[0],k[1])}});attackBtn.addEventListener('click',()=>playerAction('attack'));skillBtn.addEventListener('click',()=>playerAction('skill'));healBtn.addEventListener('click',()=>playerAction('heal'));guardBtn.addEventListener('click',()=>playerAction('guard'));magicBtn.addEventListener('click',toggleMagicPanel);spellBtns.forEach(btn=>btn.addEventListener('click',()=>playerAction('magic',btn.dataset.spell)));jobBtn.addEventListener('click',toggleJobPanel);jobBtns.forEach(btn=>btn.addEventListener('click',()=>switchJob(btn.dataset.job)));shopBtn.addEventListener('click',toggleShopPanel);shopBtns.forEach(btn=>btn.addEventListener('click',()=>{const [type,id]=btn.dataset.shop.split(':');buyOrEquipEquipment(type,id)}));bgmBtn.addEventListener('click',toggleBgm);restartBtn.addEventListener('click',resetGame);window.__showEnemyForCheck=(index)=>{stage=Math.max(0,Math.min(index,enemies.length-1));nextEnemy(index===0);locked=false;render();};window.__levelUpForCheck=()=>{hero.exp=hero.expNext;const logs=applyLevelUp();setMessage(`<strong>レベルアップテスト</strong><br>${logs.join('<br>')}`);render();};window.__changeJobForCheck=(id)=>switchJob(id);window.__moveForCheck=(dx,dy)=>movePlayer(dx,dy);window.__enterMapForCheck=()=>enterMapMode();window.__storyForCheck=()=>{storyPanel.classList.add('open');renderStoryPanel();return hero.story};resetGame();
 })();
 </script>
 </body></html>
